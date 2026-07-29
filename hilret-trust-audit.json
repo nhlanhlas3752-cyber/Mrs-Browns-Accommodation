@@ -1,0 +1,212 @@
+{
+  "id": "hilret-trust-2026",
+  "name": "Hilret Trust — Pre-Deployment Security Audit",
+  "auditor": "Claude Code",
+  "createdAt": "2026-07-27T00:00:00.000Z",
+  "updatedAt": "2026-07-27T00:00:00.000Z",
+  "results": {
+    "s1-1":  "pass", "s1-2":  "risk", "s1-3":  "pass", "s1-4":  "pass",
+    "s1-5":  "fail", "s1-6":  "pass", "s1-7":  "fail", "s1-8":  "na",
+    "s1-9":  "fail", "s1-10": "na",   "s1-11": "pass", "s1-12": "fail",
+    "s1-13": "pass", "s1-14": "risk",
+
+    "s2-1":  "pass", "s2-2":  "risk", "s2-3":  "risk", "s2-4":  "risk",
+    "s2-5":  "pass", "s2-6":  "pass", "s2-7":  "pass",
+
+    "s3-1":  "pass", "s3-2":  "pass", "s3-3":  "pass", "s3-4":  "risk",
+    "s3-5":  "fail", "s3-6":  "pass", "s3-7":  "fail",
+
+    "s4-1":  "pass", "s4-2":  "pass", "s4-3":  "fail", "s4-4":  "fail",
+    "s4-5":  "risk", "s4-6":  "na",   "s4-7":  "pass", "s4-8":  "fail",
+    "s4-9":  "fail",
+
+    "s5-1":  "fail", "s5-2":  "fail", "s5-3":  "fail", "s5-4":  "risk",
+    "s5-5":  "risk",
+
+    "s6-1":  "pass", "s6-2":  "pass", "s6-3":  "pass", "s6-4":  "risk",
+    "s6-5":  "pass", "s6-6":  "pass", "s6-7":  "fail", "s6-8":  "na",
+
+    "s7-1":  "risk", "s7-2":  "pass", "s7-3":  "pass", "s7-4":  "pass",
+    "s7-5":  "na",   "s7-6":  "risk", "s7-7":  "risk", "s7-8":  "risk",
+    "s7-9":  "pass",
+
+    "s8-1":  "risk", "s8-2":  "risk", "s8-3":  "risk", "s8-4":  "risk",
+    "s8-5":  "fail", "s8-6":  "pass", "s8-7":  "pass", "s8-8":  "pass",
+    "s8-9":  "pass", "s8-10": "fail", "s8-11": "risk", "s8-12": "na",
+    "s8-13": "pass", "s8-14": "pass",
+
+    "s9-1":  "fail", "s9-2":  "fail", "s9-3":  "fail", "s9-4":  "risk",
+    "s9-5":  "fail", "s9-6":  "fail", "s9-7":  "fail", "s9-8":  "risk",
+    "s9-9":  "fail", "s9-10": "fail",
+
+    "s10-1": "pass", "s10-2": "risk", "s10-3": "pass", "s10-4": "pass",
+    "s10-5": "risk", "s10-6": "pass", "s10-7": "na",   "s10-8": "na",
+    "s10-9": "na",   "s10-10":"risk",
+
+    "s11-1": "pass", "s11-2": "pass", "s11-3": "pass", "s11-4": "risk",
+    "s11-5": "pass", "s11-6": "risk", "s11-7": "risk",
+
+    "s12-1": "fail", "s12-2": "fail", "s12-3": "fail", "s12-4": "na",
+    "s12-5": "fail", "s12-6": "fail", "s12-7": "fail",
+
+    "s13-1": "na",   "s13-2": "na",   "s13-3": "na",   "s13-4": "pass",
+    "s13-5": "fail", "s13-6": "na",   "s13-7": "na",   "s13-8": "na",
+    "s13-9": "pass",
+
+    "s14-1": "fail", "s14-2": "risk", "s14-3": "risk", "s14-4": "fail",
+    "s14-5": "na",   "s14-6": "na",   "s14-7": "na",   "s14-8": "na",
+    "s14-9": "na",   "s14-10":"risk", "s14-11":"na",   "s14-12":"risk",
+
+    "s15-1": "risk", "s15-2": "fail", "s15-3": "fail", "s15-4": "na",
+    "s15-5": "na",   "s15-6": "fail", "s15-7": "na",
+
+    "s16-1": "risk", "s16-2": "na",   "s16-3": "fail", "s16-4": "na",
+    "s16-5": "na",   "s16-6": "fail", "s16-7": "pass", "s16-8": "pass",
+
+    "s17-1": "na",   "s17-2": "na",   "s17-3": "na",   "s17-4": "na",
+    "s17-5": "na",   "s17-6": "na",   "s17-7": "na",   "s17-8": "na",
+
+    "s18-1": "fail", "s18-2": "fail", "s18-3": "fail", "s18-4": "fail",
+    "s18-5": "risk", "s18-6": "pass", "s18-7": "fail", "s18-8": "pass",
+    "s18-9": "risk", "s18-10":"na",   "s18-11":"fail", "s18-12":"fail",
+
+    "s19-1": "pass", "s19-2": "pass", "s19-3": "pass", "s19-4": "pass",
+    "s19-5": "pass", "s19-6": "pass", "s19-7": "risk",
+
+    "s20-1": "na",   "s20-2": "na",   "s20-3": "na",   "s20-4": "na",
+    "s20-5": "na",   "s20-6": "na",   "s20-7": "na",
+
+    "s21-1": "pass", "s21-2": "risk", "s21-3": "pass", "s21-4": "risk",
+    "s21-5": "pass", "s21-6": "risk", "s21-7": "fail", "s21-8": "fail",
+
+    "s22-1": "pass", "s22-2": "na",   "s22-3": "pass", "s22-4": "fail",
+    "s22-5": "fail", "s22-6": "fail", "s22-7": "fail", "s22-8": "fail",
+    "s22-9": "pass", "s22-10":"risk",
+
+    "s23-1": "na",   "s23-2": "na",   "s23-3": "na",   "s23-4": "na",
+    "s23-5": "na",   "s23-6": "na",   "s23-7": "na",   "s23-8": "na",
+
+    "s24-1": "fail", "s24-2": "fail", "s24-3": "risk", "s24-4": "risk",
+    "s24-5": "fail", "s24-6": "risk", "s24-7": "pass", "s24-8": "pass"
+  },
+  "notes": {
+    "s1-2":  "Minimum is 8 characters — OWASP recommends 12+ for admin accounts. Increase in signup.php and reset-password.php",
+    "s1-5":  "Default admin password Admin@1234 must be changed immediately after importing DB on live server",
+    "s1-7":  "No failed login counter or lockout logic in auth.php. Add rate limiting or account lockout",
+    "s1-9":  "No 2FA/MFA implemented. Acceptable for v1 but recommended for future releases",
+    "s1-12": "DB credentials in backend/config.php. Move to server environment variables ($DB_PASS = getenv('DB_PASS'))",
+    "s1-14": "create_reset_token() returns null for unknown emails — response timing may differ vs. known email. Mitigated by always showing same success message",
+
+    "s2-2":  "PHP default session timeout used. Set session.gc_maxlifetime and a manual idle check in auth-check.php",
+    "s2-3":  "No absolute session timeout enforced. Add timestamp to session on login and force re-login after 8h",
+    "s2-4":  "HttpOnly/Secure/SameSite not set in PHP config. Add to config.php: session_set_cookie_params(['secure'=>true,'httponly'=>true,'samesite'=>'Lax'])",
+
+    "s3-4":  "rooms.php and dashboard pages use string-interpolated IDs in some dynamic queries (e.g. WHERE residence_id=$resId). Use parameterized queries",
+    "s3-5":  "Using 'root' DB user. Create a limited DB user: GRANT SELECT,INSERT,UPDATE,DELETE ON hilret_trust.* TO 'hilret_app'@'localhost'",
+    "s3-7":  "Single config.php for all environments. Use getenv() or a .env loader so credentials differ per environment",
+
+    "s4-3":  "No Content-Security-Policy header set on any page. Add via PHP header() or Apache .htaccess",
+    "s4-4":  "No CSP — all inline scripts currently uncontrolled. Plan nonce-based CSP for future release",
+    "s4-5":  "X-Content-Type-Options: nosniff set in document.php but not via global Apache header or PHP for all pages",
+    "s4-8":  "No CSP report-uri. Add after implementing CSP to monitor violations",
+    "s4-9":  "No CSP base-uri directive. Add base-uri 'self' when CSP is implemented",
+
+    "s5-1":  "No CSRF tokens on any dashboard form (status changes, room assignment, etc.). Add synchronizer token pattern",
+    "s5-2":  "AJAX calls (assign-application.php, move-out.php) have no CSRF validation",
+    "s5-3":  "No CSRF implementation at all. Priority fix — all state-changing POST endpoints are vulnerable",
+    "s5-4":  "Session cookie SameSite not explicitly set. Set SameSite=Lax via session_set_cookie_params()",
+    "s5-5":  "submit-application.php (public form) and dashboard AJAX endpoints don't check Origin/Referer",
+
+    "s6-4":  "Filenames use predictable pattern: {app_id}_doc_{field}_{timestamp}.ext. Switch to unguessable UUIDs",
+    "s6-7":  "Uploaded images (JPG/PNG) are stored as-is without re-encoding. Re-process with GD to strip metadata and payloads",
+
+    "s7-1":  "Dashboard application-view.php fetches application by ID without verifying it belongs to current admin's scope",
+    "s7-6":  "IDOR not formally tested. Manually test by changing application IDs and room IDs in URLs while logged in as different admins",
+    "s7-7":  "Vertical escalation not tested. Confirm regular users cannot access admin endpoints",
+    "s7-8":  "All admin users have identical permissions. Consider adding 'manager' role with read-only restrictions for future releases",
+
+    "s8-1":  "HTTPS redirect depends on live server config. Add 301 redirect in .htaccess: RewriteEngine On / RewriteCond %{HTTPS} off / RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]",
+    "s8-2":  "TLS version restriction is server-level config. Verify on live host via ssllabs.com after deployment",
+    "s8-3":  "Cipher suite selection is server-level. Request cipher hardening from hosting provider",
+    "s8-4":  "Forward secrecy is server-level config",
+    "s8-5":  "HSTS not set. Add: Header always set Strict-Transport-Security 'max-age=31536000; includeSubDomains' in .htaccess",
+    "s8-10": "database/schema.sql is in the web root. Add to .htaccess: <Files *.sql> Deny from all </Files> or move outside web root",
+    "s8-11": "password fields have autocomplete=new-password. ID number and sensitive text fields don't have autocomplete=off",
+
+    "s9-1":  "No CSP. Add via .htaccess Header always set Content-Security-Policy after auditing all script/style sources",
+    "s9-2":  "No X-Frame-Options. Add: Header always set X-Frame-Options SAMEORIGIN",
+    "s9-3":  "No frame-ancestors in CSP",
+    "s9-4":  "Only set in dashboard/document.php. Add globally: Header always set X-Content-Type-Options nosniff",
+    "s9-5":  "Add: Header always set Referrer-Policy strict-origin-when-cross-origin",
+    "s9-6":  "Add HSTS after HTTPS confirmed working on live server",
+    "s9-7":  "Add: Header always set Permissions-Policy camera=(), microphone=(), geolocation=()",
+    "s9-8":  "Add: Header always unset X-Powered-By / ServerTokens Prod in Apache config",
+    "s9-9":  "Add: Header always set Cross-Origin-Opener-Policy same-origin",
+    "s9-10": "Add: Header always set Cross-Origin-Resource-Policy same-site",
+
+    "s10-2": "Text fields don't all have maxlength HTML attributes or server-side string length checks. Add strlen() checks",
+    "s10-5": "Phone number accepts any string — no format validation. Add regex check for SA phone numbers",
+    "s10-10":"Redirect after login uses hardcoded /dashboard/overview.php — no user-controlled redirect. Low risk",
+
+    "s11-4": "Using Apache default 404/403 pages. Create custom ErrorDocument 403, 404, 500 pages in .htaccess",
+    "s11-6": "X-Powered-By header likely exposed by Apache default config. Set ServerTokens Prod",
+    "s11-7": "Add Options -Indexes to root .htaccess to prevent directory listing on all directories",
+
+    "s12-1": "No rate limiting on login. Add PHP-based IP rate limiting or use hosting-level WAF",
+    "s12-2": "No account lockout. Add failed_attempts counter and lockout_until fields to users table",
+    "s12-3": "Password reset (forgot-password.php) has no rate limit — can be abused to spam emails",
+    "s12-5": "submit-application.php has no rate limit — could be spammed. Add IP-based throttle",
+    "s12-6": "No CAPTCHA on application form or login. Consider hCaptcha or Cloudflare Turnstile",
+    "s12-7": "No monitoring. Set up email alerts for repeated failed logins or unusual activity",
+
+    "s13-5": "Google Fonts loaded from fonts.googleapis.com without SRI hash. Self-host fonts or add integrity attribute",
+
+    "s14-1": "backend/config.php contains DB credentials as constants. Move to getenv() calls: define('DB_PASS', getenv('DB_PASS'))",
+    "s14-2": "database/schema.sql is inside web root. Should be outside public_html or blocked via .htaccess",
+    "s14-3": "schema.sql and dev files in deployment. Add .htaccess rules to deny .sql, .md, .json config files",
+    "s14-4": "No staging environment — dev and prod share same config.php pattern",
+    "s14-10":"schema.sql, *.md files may be served publicly. Block non-essential file types in .htaccess",
+    "s14-12":"HTTP TRACE method status unknown. Test with: curl -X TRACE https://yourdomain.com and disable in Apache if enabled",
+
+    "s15-1": "last_login timestamp updated on success but no failed login logging. Add a login_attempts table",
+    "s15-2": "No audit log for admin actions (status changes, room assignments, etc.). Add audit_log table",
+    "s15-3": "No structured logging anywhere. Add a lightweight log_action() helper writing to a server log file",
+    "s15-6": "No alerting configured. Set up email alerts or integrate with a monitoring service post-launch",
+
+    "s16-1": "submit-application.php is public (intentional — public-facing form). Ensure rate-limiting is added",
+    "s16-3": "Dashboard responses don't include Cache-Control: no-store. Add to auth-check.php: header('Cache-Control: no-store')",
+    "s16-6": "No API rate limiting. Add IP-based throttling to backend/*.php endpoints",
+
+    "s18-1": "Run OWASP ZAP against staging before go-live",
+    "s18-2": "Test at securityheaders.com after adding .htaccess security headers",
+    "s18-3": "Test at ssllabs.com after HTTPS configured on live server — target A rating",
+    "s18-4": "Search Google for: site:hilrettrust.co.za filetype:sql OR filetype:env after indexing",
+    "s18-5": "Review all PHP files for TODO/FIXME comments before deployment",
+    "s18-7": "Add custom ErrorDocument 403 /403.html etc. in root .htaccess",
+    "s18-9": "Manually test IDOR: login as admin, change application ID in URL to verify access control",
+    "s18-11":"No git repository — version control not set up. Initialise git and scan history before first push",
+    "s18-12":"Schedule annual penetration test with a qualified third party",
+
+    "s19-7": "CORS not formally tested with evil.com origin — verify after deployment",
+
+    "s21-2": "Edge cases not all tested: zero-value rent, overlapping lease dates, applying twice",
+    "s21-4": "Document upload and application INSERT not atomic — partial failure possible",
+    "s21-6": "Password reset token deletion happens after successful password update. Confirm no race condition under concurrent requests",
+    "s21-7": "Test role parameter tampering: POST with role=admin in body to API endpoints",
+    "s21-8": "Document abuse cases: what if applicant submits multiple applications? What if admin approves a rejected application?",
+
+    "s22-4": "No resident data export feature. POPIA gives data subjects the right to access their data",
+    "s22-5": "No data deletion / right to erasure implemented. Required under POPIA",
+    "s22-6": "Data retention periods defined in privacy.html but no automated purge scheduled",
+    "s22-7": "No documented breach notification procedure. Assign a responsible person and document the 72-hour notification process",
+    "s22-8": "Confirm DPAs with any third-party services used (hosting provider, email provider)",
+    "s22-10":"POPIA compliance noted in privacy.html. International data transfers (e.g. Google Fonts) not addressed",
+
+    "s24-1": "No threat model produced. Document: who are the adversaries (fraudulent applicants, disgruntled ex-residents, external attackers)?",
+    "s24-2": "Abuse cases not documented alongside features",
+    "s24-3": "Trust boundaries partially defined — dashboard vs. public site. Formalize in architecture doc",
+    "s24-4": "Single admin role for all users. Add role-based access control for manager vs. super-admin",
+    "s24-5": "No formal security design review conducted before implementation",
+    "s24-6": "Auth checks present but no second layer (e.g. re-authentication for destructive actions like deleting records)"
+  }
+}

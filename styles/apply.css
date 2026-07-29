@@ -1,0 +1,719 @@
+/* =================================================================
+   Apply Page — Registration Form Styles
+   Tokens: orange #FD5B09 | cream #F5F3EF | border #6B7280 | tan #A49B7A
+   Font: Montserrat (Gotham substitute, loaded in <head>)
+   ================================================================= */
+
+:root {
+  --ap-orange:  #FD5B09;
+  --ap-cream:   #F5F3EF;
+  --ap-border:  #6B7280;
+  --ap-tan:     #A49B7A;
+  --ap-black:   #000000;
+  --ap-white:   #FFFFFF;
+  --ap-bg:      #FFFFFF;
+  --ap-font:    'Montserrat', ui-sans-serif, system-ui, -apple-system,
+                'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ap-ease:    0.15s ease;
+}
+
+/* ── Page shell ─────────────────────────────────────────────────── */
+.apply-body  { background: var(--ap-bg); }
+.apply-page  { background: var(--ap-bg); min-height: 100vh; }
+
+
+/* ── Page Banner ─────────────────────────────────────────────────
+   Navy strip at the top — mirrors the site's primary colour.
+   ───────────────────────────────────────────────────────────────── */
+.apply-header { background: #2C3E6B; padding: 64px 24px 48px; }
+.apply-header__inner { max-width: 1200px; margin: 0 auto; }
+
+.apply-header__eyebrow {
+  font-family: var(--ap-font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  margin: 0 0 8px;
+  max-width: none;
+}
+.apply-header__title {
+  font-family: var(--ap-font);
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ap-white);
+  margin: 0 0 14px;
+}
+.apply-header__sub {
+  font-family: var(--ap-font);
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,.72);
+  max-width: 54ch;
+  margin: 0;
+  line-height: 1.65;
+}
+
+
+/* ── Progress Indicator ──────────────────────────────────────────
+   Four numbered dots joined by lines. Active = orange, done = black.
+   ───────────────────────────────────────────────────────────────── */
+.apply-progress {
+  background: var(--ap-cream);
+  border-bottom: 1px solid var(--ap-border);
+  padding: 28px 24px;
+}
+.apply-progress__inner { max-width: 560px; margin: 0 auto; }
+
+.progress-steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.progress-step__dot {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--ap-cream);
+  border: 2px solid var(--ap-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ap-font);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ap-border);
+  transition: background var(--ap-ease), border-color var(--ap-ease), color var(--ap-ease);
+}
+.progress-step.active   .progress-step__dot { background: var(--ap-orange); border-color: var(--ap-orange); color: var(--ap-white); }
+.progress-step.complete .progress-step__dot { background: var(--ap-black);  border-color: var(--ap-black);  color: var(--ap-white); }
+
+.progress-step__label {
+  font-family: var(--ap-font);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--ap-border);
+  white-space: nowrap;
+}
+.progress-step.active   .progress-step__label { color: var(--ap-orange); }
+.progress-step.complete .progress-step__label { color: var(--ap-black);  }
+
+/* Connector line sits between dots, vertically centred with the dot */
+.progress-step__line {
+  flex: 1;
+  height: 2px;
+  background: var(--ap-border);
+  align-self: flex-start;
+  margin-top: 19px;          /* half of dot height to centre on dot */
+  min-width: 32px;
+  max-width: 80px;
+  transition: background var(--ap-ease);
+}
+.progress-step__line.complete { background: var(--ap-black); }
+
+
+/* ── Form Wrapper ────────────────────────────────────────────────── */
+.apply-form-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+.apply-form { position: relative; }
+
+
+/* ── Form Steps ──────────────────────────────────────────────────── */
+.form-step          { display: none; }
+.form-step.active   { display: block; }
+
+.form-section-title {
+  margin-bottom: 40px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--ap-black);
+}
+.form-section-title h2 {
+  font-family: var(--ap-font);
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ap-black);
+  margin: 0;
+}
+
+
+/* ── Form Row ────────────────────────────────────────────────────
+   Two-column: left label (25% on desktop) + right fields.
+   Negative-margin pattern inside field-group mirrors Tailwind -mx-3.
+   ───────────────────────────────────────────────────────────────── */
+.form-row {
+  display: flex;
+  gap: 0;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #D1D5DB;
+  margin-bottom: 32px;
+}
+.form-row--last { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+/* Left label column */
+.form-row__label-col {
+  width: 25%;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: 40px;
+  padding-top: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+.form-row__key {
+  font-family: var(--ap-font);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--ap-tan);
+  line-height: 1;
+}
+.form-row__desc {
+  font-family: var(--ap-font);
+  font-size: 11px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ap-tan);
+  line-height: 1.45;
+  max-width: 18ch;
+}
+
+/* Right fields column */
+.form-row__fields {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+
+/* ── Field Group (side-by-side inputs) ───────────────────────────
+   Mirrors Tailwind -mx-3 md:flex with px-3 children.
+   ───────────────────────────────────────────────────────────────── */
+.field-group {
+  display: flex;
+  margin-left: -12px;
+  margin-right: -12px;
+  flex-wrap: wrap;
+}
+.field-col {
+  flex: 1;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-width: 180px;
+}
+
+
+/* ── Field Label ─────────────────────────────────────────────────── */
+.field-label {
+  display: block;
+  font-family: var(--ap-font);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--ap-black);
+  margin-bottom: 8px;
+}
+
+
+/* ── Text Input ──────────────────────────────────────────────────── */
+.text-input {
+  width: 100%;
+  background: var(--ap-cream);
+  border: 1px solid var(--ap-border);
+  border-radius: 0;
+  padding: 8px 12px;
+  font-family: var(--ap-font);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ap-black);
+  outline: none;
+  transition: border-color var(--ap-ease);
+  box-sizing: border-box;
+}
+.text-input:focus         { border-color: var(--ap-orange); }
+.text-input.error         { border-color: var(--ap-orange); }
+.text-input::placeholder  { color: #9CA3AF; font-weight: 300; }
+.text-input--half         { max-width: 340px; }
+.text-input--area         { resize: vertical; min-height: 110px; border-radius: 0; }
+
+
+/* ── Select Input ────────────────────────────────────────────────── */
+.select-input {
+  width: 100%;
+  background: var(--ap-cream);
+  border: 1px solid var(--ap-border);
+  border-radius: 4px;
+  padding: 12px 40px 12px 16px;
+  font-family: var(--ap-font);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ap-black);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--ap-ease);
+  box-sizing: border-box;
+}
+.select-input:focus   { border-color: var(--ap-orange); }
+.select-input--half   { max-width: 340px; }
+
+
+/* ── Toggle Group (binary: Male/Female, Yes/No) ──────────────────
+   Only outer corners rounded; shared inner edge has no radius.
+   Active = orange bg + white text. Inactive = cream bg + black text.
+   ───────────────────────────────────────────────────────────────── */
+.toggle-group {
+  display: inline-flex;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.10);
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 12px 40px;
+  background: var(--ap-cream);
+  color: var(--ap-black);
+  font-family: var(--ap-font);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--ap-border);
+  cursor: pointer;
+  border-radius: 0;
+  transition: background var(--ap-ease), color var(--ap-ease), border-color var(--ap-ease);
+  line-height: 1;
+}
+.toggle-btn:first-child { border-radius: 4px 0 0 4px; }
+.toggle-btn:last-child  { border-radius: 0 4px 4px 0; border-left: none; }
+
+.toggle-btn.active {
+  background: var(--ap-orange);
+  color: var(--ap-white);
+  border-color: var(--ap-orange);
+  z-index: 1;
+}
+.toggle-btn:not(.active):hover { background: #E8E4DC; }
+
+
+/* ── Radio Group ─────────────────────────────────────────────────── */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ap-font);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ap-black);
+  cursor: pointer;
+  line-height: 1.4;
+}
+.radio-option input[type="radio"] {
+  width: 18px; height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--ap-orange);
+  cursor: pointer;
+  margin: 0;
+}
+.radio-option strong { font-weight: 700; }
+.radio-option.error  { color: var(--ap-orange); }
+
+
+/* ── Checkbox + inline link ──────────────────────────────────────── */
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--ap-font);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ap-black);
+  cursor: pointer;
+  line-height: 1.55;
+}
+.checkbox-label input[type="checkbox"] {
+  width: 18px; height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  accent-color: var(--ap-orange);
+  cursor: pointer;
+}
+.form-link {
+  color: var(--ap-orange);
+  text-decoration: underline;
+  font-weight: 700;
+}
+.form-link:hover { color: #C94500; }
+
+
+/* ── Submit Button ───────────────────────────────────────────────── */
+.submit-btn {
+  width: 100%;
+  background: var(--ap-orange);
+  color: var(--ap-white);
+  font-family: var(--ap-font);
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 24px;
+  margin: 32px 0;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background var(--ap-ease), transform var(--ap-ease);
+  line-height: 1;
+}
+.submit-btn:hover  { background: #D94C00; transform: translateY(-1px); }
+.submit-btn:active { transform: translateY(0); }
+
+
+/* ── Review Summary Box ──────────────────────────────────────────── */
+.review-box {
+  background: var(--ap-cream);
+  border: 1px solid var(--ap-border);
+  padding: 24px 28px;
+}
+.review-box__section { margin-bottom: 22px; }
+.review-box__section:last-child { margin-bottom: 0; }
+
+.review-box__heading {
+  font-family: var(--ap-font);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--ap-tan);
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #D1D5DB;
+}
+.review-box__row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 6px;
+  font-family: var(--ap-font);
+  font-size: 13px;
+}
+.review-box__key {
+  font-weight: 700;
+  color: var(--ap-black);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-size: 11px;
+  min-width: 120px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+.review-box__val {
+  color: var(--ap-black);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+
+/* ── Step Navigation (Back / Next) ───────────────────────────────── */
+.form-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #D1D5DB;
+}
+.form-nav__back,
+.form-nav__next {
+  font-family: var(--ap-font);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 28px;
+  border-radius: 4px;
+  border: 2px solid var(--ap-black);
+  background: transparent;
+  color: var(--ap-black);
+  cursor: pointer;
+  transition: background var(--ap-ease), color var(--ap-ease), transform var(--ap-ease);
+  line-height: 1;
+}
+.form-nav__back:hover,
+.form-nav__next:hover { background: var(--ap-black); color: var(--ap-white); transform: translateY(-1px); }
+.form-nav__back:active,
+.form-nav__next:active { transform: translateY(0); }
+
+/* Back hidden on step 1, Next hidden on step 4 */
+.form-nav__back { visibility: hidden; }
+.form-nav__next { display: block; }
+
+
+/* ── Validation error state ─────────────────────────────────────── */
+.field-error {
+  font-family: var(--ap-font);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ap-orange);
+  margin-top: 4px;
+  display: block;
+}
+
+
+/* ── Success screen (replaces form on submit) ────────────────────── */
+.success-screen {
+  text-align: center;
+  padding: 80px 24px;
+}
+.success-screen__icon {
+  display: block;
+  margin: 0 auto 24px;
+  color: var(--ap-orange);
+}
+.success-screen__title {
+  font-family: var(--ap-font);
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--ap-black);
+  margin: 0 0 16px;
+}
+.success-screen__sub {
+  font-family: var(--ap-font);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--ap-border);
+  max-width: 44ch;
+  margin: 0 auto 32px;
+  line-height: 1.65;
+}
+.success-screen__btn {
+  display: inline-block;
+  background: var(--ap-orange);
+  color: var(--ap-white);
+  font-family: var(--ap-font);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 14px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background var(--ap-ease);
+}
+.success-screen__btn:hover { background: #D94C00; }
+
+
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════════════ */
+
+/* Tablet (≤ 900px) */
+@media (max-width: 900px) {
+  .form-row__label-col { width: 22%; padding-right: 24px; }
+}
+
+/* Mobile (≤ 768px) — hide left label column, stack everything */
+@media (max-width: 768px) {
+  .apply-header { padding: 40px 20px 32px; }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .form-row__label-col { display: none; }  /* hidden per spec */
+  .form-row__fields    { width: 100%; }
+
+  .apply-form-wrap { padding: 32px 20px 64px; }
+
+  .field-group  { flex-direction: column; margin: 0; }
+  .field-col    { padding: 0; }
+  .field-col + .field-col { margin-top: 16px; }
+
+  .text-input--half,
+  .select-input--half { max-width: 100%; }
+
+  .toggle-btn { padding: 12px 24px; }
+
+  .progress-step__label { display: none; }
+  .progress-step__line  { min-width: 20px; max-width: 48px; }
+
+  .form-section-title { margin-bottom: 28px; }
+}
+
+/* Small mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .apply-header__title     { font-size: 26px; }
+  .form-section-title h2   { font-size: 24px; }
+  .toggle-btn              { padding: 10px 16px; font-size: 12px; }
+  .form-nav__back,
+  .form-nav__next          { padding: 10px 20px; font-size: 12px; }
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   DOCUMENT UPLOAD — Step 4
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Context notice ──────────────────────────────────────────────── */
+.doc-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-left: 3px solid #2C3E6B;
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-bottom: 36px;
+  font-family: var(--ap-font);
+  font-size: 12px;
+  font-weight: 300;
+  color: #1E3A5F;
+  line-height: 1.6;
+}
+.doc-notice svg { flex-shrink: 0; margin-top: 1px; color: #2C3E6B; }
+
+/* ── Document description ────────────────────────────────────────── */
+.doc-desc {
+  font-family: var(--ap-font);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ap-border);
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+/* ── Required badge ──────────────────────────────────────────────── */
+.doc-badge {
+  display: inline-block;
+  font-family: var(--ap-font);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.doc-badge--required {
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+}
+
+/* ── Drop zone ───────────────────────────────────────────────────── */
+.doc-drop-zone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 28px 20px;
+  background: var(--ap-cream);
+  border: 2px dashed var(--ap-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color var(--ap-ease), background var(--ap-ease);
+  text-align: center;
+  outline: none;
+}
+.doc-drop-zone:hover,
+.doc-drop-zone:focus  { border-color: var(--ap-orange); background: #FFF8F5; }
+.doc-drop-zone.drag-over { border-color: var(--ap-orange); background: #FFF1E9; }
+.doc-drop-zone.has-file  {
+  border-color: #059669;
+  border-style: solid;
+  background: #F0FDF9;
+  padding: 20px;
+}
+.doc-drop-zone.error     { border-color: var(--ap-orange); border-style: solid; }
+
+.doc-drop-icon { color: var(--ap-border); transition: color var(--ap-ease); }
+.doc-drop-zone:hover .doc-drop-icon,
+.doc-drop-zone:focus .doc-drop-icon { color: var(--ap-orange); }
+.doc-drop-zone.has-file .doc-drop-icon { color: #059669; }
+
+.doc-drop-text {
+  font-family: var(--ap-font);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ap-black);
+  margin: 0;
+  line-height: 1.4;
+}
+.doc-drop-text span {
+  color: var(--ap-orange);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.doc-drop-hint {
+  font-family: var(--ap-font);
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--ap-border);
+  margin: 0;
+}
+
+/* Hide the actual file input — zone handles the click */
+.doc-file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  font-size: 0;
+}
+
+/* ── Selected file name display ──────────────────────────────────── */
+.doc-file-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-family: var(--ap-font);
+  font-size: 12px;
+  font-weight: 700;
+  color: #059669;
+  min-height: 20px;
+  word-break: break-all;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .doc-notice { font-size: 11px; }
+  .doc-drop-zone { padding: 20px 16px; }
+}

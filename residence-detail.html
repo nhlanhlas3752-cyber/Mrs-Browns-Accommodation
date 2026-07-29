@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    Swap: update title, description, and og:image for each individual
+    property. A good pattern is "[Property Name] — NestEd Living".
+  -->
+  <title>House 29 — NestEd Living</title>
+  <meta name="description" content="House 29 is a modern, fully-furnished student residence in Durban North. Apply for a room with NestEd Living today.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <!-- Shared header injected by scripts/main.js -->
+  <header id="site-header"></header>
+
+  <main>
+
+    <!-- ============================================================
+         SECTION 1: DETAIL HERO
+         Full-bleed hero photo with a rounded white overlay card.
+         The card contains the location tag, property name (h1),
+         a description paragraph, and the Apply Now CTA.
+
+         Swap:
+           - Replace the background-image inline style with a real
+             hero photo of this property's exterior or lobby.
+           - Update the location-tag, h1, paragraph, and CTA href.
+           - The breadcrumb link returns the user to residences.html.
+         ============================================================ -->
+    <section
+      class="detail-hero"
+      style="background-image: url('https://placehold.co/1920x1080/2C3E6B/FFFFFF?text=Westview+House+Hero');"
+      aria-label="House 29 — property overview"
+    >
+      <div class="detail-hero__overlay"></div>
+      <div class="detail-hero__inner">
+
+        <!-- Breadcrumb: back to residences listing -->
+        <a href="residences.html" class="detail-breadcrumb" aria-label="Back to all residences">
+          All Residences
+        </a>
+
+        <!-- White overlay card -->
+        <div class="detail-hero__card">
+          <span class="location-tag">Durban North &middot; KwaZulu-Natal</span>
+          <h1>House 29</h1>
+          <!--
+            Swap: replace this paragraph with a 2–3 sentence description
+            of this specific property. Keep it student-focused — location
+            advantages, key features, and what sets it apart.
+          -->
+          <p>
+            House 29 is a modern, fully-furnished residence in Botanic Grove.
+            With study rooms, a communal kitchen, high-speed fibre, and
+            round-the-clock security, it's everything you need to live
+            comfortably — whoever you are.
+          </p>
+          <!--
+            Swap: update href to your actual apply portal, ideally with
+            a query string pre-selecting this property,
+            e.g. apply.html?property=westview-house
+          -->
+          <a href="apply.html" class="btn btn--primary btn--lg">Apply Now</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 2: PROPERTY AMENITIES / FACILITIES GRID
+         Same visual pattern as the Home page amenities section,
+         but listing only the amenities available at this property.
+         Swap: remove tiles for amenities this property doesn't have,
+         add new <li> elements for any this property offers.
+         Replace emoji with <img> SVG icons for the final site.
+         ============================================================ -->
+    <section class="amenities" aria-labelledby="amenities-heading">
+      <div class="container">
+        <h2 class="section-heading" id="amenities-heading">What's Included</h2>
+        <p class="section-sub">
+          Every room at House 29 comes with access to the following
+          on-site facilities.
+        </p>
+
+        <ul class="amenities__grid" role="list">
+          <!-- Swap: keep only the amenities this property actually offers -->
+          <li><span class="amenity-icon" aria-hidden="true">🍳</span><span>Communal Kitchen</span></li>
+          <li><span class="amenity-icon" aria-hidden="true">👕</span><span>Laundry Facilities</span></li>
+          <li><span class="amenity-icon" aria-hidden="true">🚗</span><span>Secure Parking</span></li>
+          <li><span class="amenity-icon" aria-hidden="true">📚</span><span>Study Rooms</span></li>
+          <li><span class="amenity-icon" aria-hidden="true">📺</span><span>TV Lounges</span></li>
+          <li><span class="amenity-icon" aria-hidden="true">🔒</span><span>24/7 Security</span></li>
+          <li><span class="amenity-icon" aria-hidden="true">📶</span><span>High-Speed Fibre</span></li>
+          <li><span class="amenity-icon" aria-hidden="true">🖐️</span><span>Biometric Access</span></li>
+          <li><span class="amenity-icon" aria-hidden="true">🚌</span><span>Shuttle Transport</span></li>
+          <li><span class="amenity-icon" aria-hidden="true">🧹</span><span>Cleaning Services</span></li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 3: MASONRY PHOTO GALLERY
+         Two-column CSS-columns masonry layout. No captions.
+         Images vary in height to create a staggered, editorial feel.
+
+         Swap: replace every img src with a real photo of this property.
+         Use a mix of:
+           - Exterior shots (building facade, entrance)
+           - Common areas (kitchen, lounge, study room)
+           - Bedroom / room interiors
+           - Outdoor / courtyard spaces
+         Aim for 8–14 photos. Update all alt attributes.
+         ============================================================ -->
+    <section class="gallery-section" aria-labelledby="gallery-heading">
+      <div class="container">
+        <h2 id="gallery-heading">Inside House 29</h2>
+
+        <div class="masonry-gallery" role="list" aria-label="Photo gallery of House 29">
+
+          <!-- Exterior shots -->
+          <img
+            src="https://placehold.co/600x420/2C3E6B/FFFFFF?text=Building+Exterior"
+            alt="Front entrance of House 29"
+            loading="lazy" role="listitem"
+          >
+          <!-- Common area -->
+          <img
+            src="WhatsApp Image 2026-07-14 at 18.52.44.jpeg"
+            alt="Spacious common lounge with seating"
+            loading="lazy" role="listitem"
+          >
+          <!-- Kitchen -->
+          <img
+            src="https://placehold.co/600x460/1A3A5C/FFFFFF?text=Communal+Kitchen"
+            alt="Fully-equipped communal kitchen"
+            loading="lazy" role="listitem"
+          >
+          <!-- Bedroom / room interior -->
+          <img
+            src="https://placehold.co/600x380/3D5A8A/FFFFFF?text=Room+Interior"
+            alt="Furnished single room interior"
+            loading="lazy" role="listitem"
+          >
+          <!-- Study room -->
+          <img
+            src="https://placehold.co/600x300/27AE60/FFFFFF?text=Study+Room"
+            alt="Quiet study room with individual desks"
+            loading="lazy" role="listitem"
+          >
+          <!-- Laundry -->
+          <img
+            src="https://placehold.co/600x440/4A6FA5/FFFFFF?text=Laundry+Room"
+            alt="On-site laundry room with washers and dryers"
+            loading="lazy" role="listitem"
+          >
+          <!-- Outdoor / courtyard -->
+          <img
+            src="https://placehold.co/600x350/1A2B4E/E8A020?text=Courtyard"
+            alt="Outdoor courtyard area"
+            loading="lazy" role="listitem"
+          >
+          <!-- TV lounge -->
+          <img
+            src="https://placehold.co/600x400/5B8DB8/FFFFFF?text=TV+Lounge"
+            alt="TV lounge with comfortable seating"
+            loading="lazy" role="listitem"
+          >
+          <!-- Corridor / building interior -->
+          <img
+            src="https://placehold.co/600x320/2C3E6B/E8A020?text=Hallway"
+            alt="Well-lit hallway inside House 29"
+            loading="lazy" role="listitem"
+          >
+          <!-- Security / entrance -->
+          <img
+            src="https://placehold.co/600x480/1A3A5C/FFFFFF?text=Secure+Entrance"
+            alt="Biometric access control at the main entrance"
+            loading="lazy" role="listitem"
+          >
+
+        </div><!-- /.masonry-gallery -->
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 4: MAP / LOCATION
+         Shows the property's position on a map with nearby points
+         of interest (campus, shops, transport routes).
+
+         Swap: replace the <img> placeholder with a real Google Maps
+         embed. Steps:
+           1. Go to maps.google.com and navigate to the property address.
+           2. Click Share → Embed a map → Copy HTML.
+           3. Paste the <iframe ...> tag in place of the <img> below,
+              keeping the class="map-embed" attribute on it.
+         ============================================================ -->
+    <section class="map-section" aria-labelledby="map-heading">
+      <div class="container">
+        <h2 id="map-heading">Find Us</h2>
+        <p style="color: var(--clr-muted); margin-bottom: var(--sp-xl); font-size:.93rem;">
+          <!-- Swap: replace with the real street address of this property -->
+          14 Westview Drive, Durban North, KwaZulu-Natal, 4051
+        </p>
+
+        <!--
+          Swap: replace this <img> with your Google Maps <iframe> embed.
+          Keep class="map-embed" on the <iframe> so the sizing styles apply.
+          Example:
+          <iframe
+            class="map-embed"
+            src="https://www.google.com/maps/embed?pb=..."
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map showing location of House 29"
+          ></iframe>
+        -->
+        <img
+          class="map-embed"
+          src="https://placehold.co/1200x500/E5E7EB/6B7280?text=Google+Map+Placeholder"
+          alt="Map showing the location of House 29 at 14 Westview Drive, Durban North"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 5: FAQ TEASER BANNER
+         Standard shared component — no changes needed per property.
+         Swap: update copy if you want property-specific FAQ messaging.
+         ============================================================ -->
+    <section class="faq-teaser" aria-label="Link to FAQ page">
+      <div class="faq-teaser__inner">
+        <div>
+          <h2>Questions About This Residence?</h2>
+          <p>
+            Browse our FAQ library for answers about applications, deposits,
+            move-in dates, and house rules at this property.
+          </p>
+        </div>
+        <a href="faqs.html" class="btn btn--primary">Browse FAQs</a>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+
+  <!-- Shared footer injected by scripts/main.js -->
+  <footer id="site-footer"></footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>

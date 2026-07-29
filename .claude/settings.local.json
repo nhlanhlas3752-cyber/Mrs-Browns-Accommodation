@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Start-Process powershell -ArgumentList \"-NoExit\", \"-Command\", \"Set-Location 'C:\\\\Users\\\\Sbonginhlanhla\\\\OneDrive - Durban University of Technology\\\\Desktop\\\\Peoples websites\\\\empangeni ress'; python -m http.server 8080\" -WindowStyle Normal)",
+      "Bash(curl -sk --ftp-ssl -T 'C:/xampp/htdocs/Mrs Browns/backend/email.php' ftp://hilrettrust:Admin%402026@hilrettrust.co.za/public_html/backend/email.php)",
+      "Bash(curl -sk --ftp-ssl -T 'C:/xampp/htdocs/Mrs Browns/backend/submit-application.php' ftp://hilrettrust:Admin%402026@hilrettrust.co.za/public_html/backend/submit-application.php)",
+      "Bash(wait)",
+      "Bash(curl -sk --ftp-ssl -v -T 'C:/xampp/htdocs/Mrs Browns/backend/email.php' ftp://hilrettrust:Admin%402026@hilrettrust.co.za/public_html/backend/email.php)",
+      "Bash(curl -sk --ftp-ssl -v -T 'C:/xampp/htdocs/Mrs Browns/backend/submit-application.php' ftp://hilrettrust:Admin%402026@hilrettrust.co.za/public_html/backend/submit-application.php)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/PHPMailer/PHPMailer/master/src/PHPMailer.php\" -o /tmp/PHPMailer.php)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/PHPMailer/PHPMailer/master/src/SMTP.php\" -o /tmp/SMTP.php)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/PHPMailer/PHPMailer/master/src/Exception.php\" -o /tmp/Exception.php)",
+      "Read(//tmp/**)",
+      "Bash(curl -sk --ftp-ssl -v -T /tmp/SMTP.php ftp://hilrettrust:Admin%402026@hilrettrust.co.za/public_html/backend/phpmailer/SMTP.php)",
+      "Bash(curl -sk --ftp-ssl -v -T /tmp/Exception.php ftp://hilrettrust:Admin%402026@hilrettrust.co.za/public_html/backend/phpmailer/Exception.php)",
+      "Bash(curl -sk --ftp-ssl -T 'C:/xampp/htdocs/Mrs Browns/backend/test_admin_notify.php' ftp://hilrettrust:Admin%402026@hilrettrust.co.za/public_html/backend/test_admin_notify.php)",
+      "Bash(curl -sk --ftp-ssl -v -T 'C:/xampp/htdocs/Mrs Browns/backend/test_admin_notify.php' ftp://hilrettrust:Admin%402026@hilrettrust.co.za/public_html/backend/test_admin_notify.php)",
+      "Bash(curl *)",
+      "Bash(Remove-Item *)"
+    ]
+  }
+}

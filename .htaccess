@@ -1,0 +1,105 @@
+# ================================================================
+#  Hilret Trust — Root .htaccess
+#  Security headers, file protection, error pages
+# ================================================================
+
+Options -Indexes
+
+# ── HTTPS redirect (uncomment on live server after SSL is confirmed) ──
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# ── Security headers ─────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # Prevent clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Prevent MIME sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Referrer leakage control
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Disable unused browser features
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+  # Prevent cross-origin window access
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+
+  # Prevent cross-origin resource reads
+  Header always set Cross-Origin-Resource-Policy "same-site"
+
+  # Content Security Policy
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.googleapis.com https://*.gstatic.com https://maps.gstatic.com; connect-src 'self' https://*.googleapis.com; frame-src https://www.google.com https://maps.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
+
+  # HSTS (uncomment on live server after SSL confirmed working)
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Remove server fingerprinting headers
+  Header always unset X-Powered-By
+  Header always unset Server
+</IfModule>
+
+# ── Cache-Control for sensitive dashboard pages ───────────────────
+<FilesMatch "\.(php)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-store, no-cache, must-revalidate, private"
+  </IfModule>
+</FilesMatch>
+
+# ── Block direct access to sensitive file types ───────────────────
+<FilesMatch "\.(sql|md|json|log|sh|env|bak|config|lock|gitignore)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# ── Block access to hidden files (dot files) ─────────────────────
+<FilesMatch "^\.">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# ── Custom error pages ────────────────────────────────────────────
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+
+# ── Browser caching for static assets ───────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg        "access plus 1 month"
+  ExpiresByType image/jpg         "access plus 1 month"
+  ExpiresByType image/png         "access plus 1 month"
+  ExpiresByType image/gif         "access plus 1 month"
+  ExpiresByType image/webp        "access plus 1 month"
+  ExpiresByType image/svg+xml     "access plus 1 month"
+  ExpiresByType video/mp4         "access plus 1 month"
+  ExpiresByType text/css          "access plus 1 week"
+  ExpiresByType text/javascript   "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType font/woff2        "access plus 1 year"
+  ExpiresByType font/woff         "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|ico|svg|mp4)$">
+    Header set Cache-Control "public, max-age=2592000, stale-while-revalidate=86400"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
+  </FilesMatch>
+  <FilesMatch "\.(woff2|woff)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# ── PHP hardening ─────────────────────────────────────────────────
+<IfModule mod_php.c>
+  php_flag display_errors Off
+  php_flag log_errors On
+  php_value session.cookie_httponly 1
+  php_value session.cookie_samesite Lax
+  php_flag session.use_only_cookies 1
+  php_flag session.use_strict_mode 1
+</IfModule>

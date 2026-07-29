@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions | Hilret Trust</title>
+  <meta name="description" content="Terms and Conditions for Hilret Trust student and professional accommodation in Botanic Grove, Berea, Durban.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+<style>
+/* ── Page-specific layout — extends main.css ── */
+.legal-hero {
+  background: var(--clr-primary);
+  padding: 80px 24px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.legal-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 40px;
+  background: var(--clr-bg);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.legal-hero__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin: 0 0 12px;
+  display: block;
+}
+.legal-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+.legal-hero__title span { color: #FE6600; }
+.legal-hero__sub {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(255,255,255,.5);
+  margin: 0;
+}
+
+.legal-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+
+/* Table of contents */
+.legal-toc {
+  background: #F8F9FB;
+  border-left: 4px solid var(--clr-primary);
+  border-radius: 0 6px 6px 0;
+  padding: 22px 28px;
+  margin-bottom: 52px;
+}
+.legal-toc__title {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--clr-muted);
+  margin: 0 0 14px;
+}
+.legal-toc ol {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 32px;
+}
+.legal-toc li {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--clr-text);
+}
+.legal-toc a {
+  color: var(--clr-primary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.legal-toc a:hover { color: #FE6600; }
+
+/* Sections */
+.legal-section { margin-bottom: 48px; }
+.legal-section__num {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FE6600;
+  margin: 0 0 4px;
+  display: block;
+}
+.legal-section h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--clr-border);
+}
+.legal-section p,
+.legal-section li {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--clr-text);
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+.legal-section ul,
+.legal-section ol { padding-left: 22px; margin-bottom: 14px; }
+.legal-section li  { margin-bottom: 6px; }
+.legal-section strong { color: #111827; font-weight: 600; }
+.legal-section a { color: var(--clr-primary); }
+.legal-section a:hover { color: #FE6600; }
+
+/* Highlight callout */
+.legal-callout {
+  background: rgba(254,102,0,.06);
+  border-left: 4px solid #FE6600;
+  border-radius: 0 6px 6px 0;
+  padding: 14px 20px;
+  margin: 16px 0;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #7C3A00;
+  line-height: 1.7;
+}
+
+.legal-divider {
+  height: 1px;
+  background: var(--clr-border);
+  margin: 52px 0;
+}
+
+/* Footer note */
+.legal-footer-note {
+  text-align: center;
+  padding: 28px 24px;
+  background: #F8F9FB;
+  border: 1px solid var(--clr-border);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--clr-muted);
+  line-height: 1.7;
+}
+.legal-footer-note a {
+  color: var(--clr-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.legal-footer-note a:hover { color: #FE6600; }
+
+@media (max-width: 640px) {
+  .legal-toc ol { grid-template-columns: 1fr; }
+  .legal-hero   { padding: 60px 20px 48px; }
+  .legal-wrap   { padding: 36px 20px 72px; }
+}
+</style>
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <div class="legal-hero">
+    <span class="legal-hero__eyebrow">Legal</span>
+    <h1 class="legal-hero__title">Terms &amp; <span>Conditions</span></h1>
+    <p class="legal-hero__sub">Effective 1 January 2025 &nbsp;·&nbsp; Hilret Trust (Pty) Ltd, Botanic Grove, Durban</p>
+  </div>
+
+  <div class="legal-wrap">
+
+    <div class="legal-toc">
+      <p class="legal-toc__title">Contents</p>
+      <ol>
+        <li><a href="#definitions">Definitions</a></li>
+        <li><a href="#application">Application &amp; Admission</a></li>
+        <li><a href="#lease">Lease Agreement</a></li>
+        <li><a href="#rent">Rent &amp; Payment</a></li>
+        <li><a href="#deposit">Deposit</a></li>
+        <li><a href="#rules">House Rules &amp; Conduct</a></li>
+        <li><a href="#amenities">Amenities &amp; Utilities</a></li>
+        <li><a href="#maintenance">Maintenance &amp; Repairs</a></li>
+        <li><a href="#termination">Termination &amp; Move-out</a></li>
+        <li><a href="#liability">Liability</a></li>
+        <li><a href="#amendments">Amendments</a></li>
+        <li><a href="#law">Governing Law</a></li>
+      </ol>
+    </div>
+
+    <!-- 1 -->
+    <div class="legal-section" id="definitions">
+      <span class="legal-section__num">Section 1</span>
+      <h2>Definitions</h2>
+      <p>In these Terms and Conditions the following terms have the meanings assigned below:</p>
+      <ul>
+        <li><strong>"Hilret Trust"</strong> means Hilret Trust (Pty) Ltd, operating student and professional accommodation at Botanic Grove, Berea, Durban, KwaZulu-Natal.</li>
+        <li><strong>"Residence"</strong> means any property owned or managed by Hilret Trust, including Houses 25, 28, 29, 35 and 39 on Botanic Grove, Berea.</li>
+        <li><strong>"Resident"</strong> means any person who has signed a lease agreement with Hilret Trust and occupies a room at a Residence.</li>
+        <li><strong>"Applicant"</strong> means any person who submits an application for accommodation.</li>
+        <li><strong>"Lease"</strong> means the written tenancy agreement entered into between Hilret Trust and a Resident.</li>
+        <li><strong>"Rent"</strong> means the monthly accommodation fee payable by the Resident in terms of the Lease.</li>
+        <li><strong>"Deposit"</strong> means the refundable security amount equal to one month's rent payable before move-in.</li>
+      </ul>
+    </div>
+
+    <!-- 2 -->
+    <div class="legal-section" id="application">
+      <span class="legal-section__num">Section 2</span>
+      <h2>Application &amp; Admission</h2>
+      <p>2.1 All persons wishing to reside at a Hilret Trust property must complete the online application form in full and submit all required supporting documents before their application will be assessed.</p>
+      <p>2.2 Submission of an application does not guarantee admission. Hilret Trust reserves the right to accept or decline any application at its sole discretion.</p>
+      <p>2.3 Applicants must be 18 years of age or older. Hilret Trust does not provide accommodation to minors.</p>
+      <p>2.4 Applicants must provide truthful and accurate information. False or misleading information will result in immediate cancellation of the application or, if discovered after admission, termination of the Lease.</p>
+      <p>2.5 Hilret Trust does not accept NSFAS-funded applications. The following funding types are accepted:</p>
+      <ul>
+        <li>Self-funded (personal bank account / savings)</li>
+        <li>Private bursary (supported by an award letter)</li>
+        <li>Employer-sponsored (supported by a sponsorship letter)</li>
+        <li>Family-supported (supported by proof of family income)</li>
+      </ul>
+      <p>2.6 An application is confirmed only upon receipt of a signed Lease Agreement and payment of the Deposit.</p>
+    </div>
+
+    <!-- 3 -->
+    <div class="legal-section" id="lease">
+      <span class="legal-section__num">Section 3</span>
+      <h2>Lease Agreement</h2>
+      <p>3.1 A written Lease Agreement will be issued to each successful applicant prior to move-in. The Lease must be signed and returned before keys are handed over.</p>
+      <p>3.2 The Lease is personal to the Resident. <strong>Rooms may not be sublet, shared or transferred</strong> to any other person without prior written consent from Hilret Trust.</p>
+      <p>3.3 Standard lease periods are academic-year based (approximately 10–12 months). Shorter or longer arrangements may be agreed to in writing at management's discretion.</p>
+      <p>3.4 The Resident is entitled to quiet enjoyment of the room for the duration of the Lease, provided they comply with these Terms.</p>
+      <div class="legal-callout">
+        Hilret Trust accommodation is single-occupancy only. Only the named Resident may sleep in the assigned room. Guests may not stay overnight without prior written approval from management.
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="legal-section" id="rent">
+      <span class="legal-section__num">Section 4</span>
+      <h2>Rent &amp; Payment</h2>
+      <p>4.1 Monthly rent is due on or before the <strong>1st day of each calendar month</strong>. Rent received after the 1st is considered late.</p>
+      <p>4.2 Current monthly rates are:</p>
+      <ul>
+        <li>House 28 — from R3,500 per month</li>
+        <li>House 25, 35 &amp; 39 — from R3,500 per month</li>
+        <li>House 29 — from R3,500 per month</li>
+      </ul>
+      <p>4.3 Rates are subject to annual review. Residents will receive at least 30 days' written notice of any increase.</p>
+      <p>4.4 Accepted payment methods: Electronic Funds Transfer (EFT) or direct bursary / employer payment. <strong>Cash is not accepted.</strong> All payments must reference the Resident's name and room number.</p>
+      <p>4.5 A late payment fee of <strong>10% of the monthly rent</strong> applies to accounts unpaid by the 7th of the month. Continued non-payment may result in termination of the Lease.</p>
+    </div>
+
+    <!-- 5 -->
+    <div class="legal-section" id="deposit">
+      <span class="legal-section__num">Section 5</span>
+      <h2>Deposit</h2>
+      <p>5.1 A refundable security deposit equal to one month's rent is payable before or at move-in.</p>
+      <p>5.2 The deposit is held as security against damage, outstanding rent, or any other amounts owed at move-out.</p>
+      <p>5.3 The deposit will be refunded within <strong>30 days</strong> of the move-out date, provided the room is vacated in the same condition as at move-in (fair wear and tear accepted), all outstanding amounts are settled, and all keys and access cards are returned.</p>
+      <p>5.4 An itemised statement of any deductions will be provided. The deposit may not be used as the final month's rent.</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="legal-section" id="rules">
+      <span class="legal-section__num">Section 6</span>
+      <h2>House Rules &amp; Conduct</h2>
+      <p>6.1 Residents must behave respectfully towards fellow residents, staff and neighbours at all times.</p>
+      <p>6.2 <strong>Quiet hours:</strong> Monday–Friday 22:00–07:00 &nbsp;|&nbsp; Weekends &amp; Public Holidays 23:00–08:00.</p>
+      <p>6.3 The following are strictly prohibited:</p>
+      <ul>
+        <li>Possession or consumption of illegal substances</li>
+        <li>Excessive noise, parties or gatherings without prior approval</li>
+        <li>Physical or verbal abuse of any person on the premises</li>
+        <li>Damage to property, furniture or shared facilities</li>
+        <li>Keeping any pets or animals on the premises</li>
+        <li>Smoking inside any building or shared area</li>
+        <li>Tampering with electrical, plumbing or security systems</li>
+        <li>Operating a business from the premises without written consent</li>
+      </ul>
+      <p>6.4 Visitors are permitted 08:00–21:00. All visitors must sign in at the security desk. Visitors may not use the room during the Resident's absence.</p>
+      <p>6.5 Residents are responsible for the behaviour of their visitors and will be held accountable for any damage or disturbance caused by a visitor.</p>
+    </div>
+
+    <!-- 7 -->
+    <div class="legal-section" id="amenities">
+      <span class="legal-section__num">Section 7</span>
+      <h2>Amenities &amp; Utilities</h2>
+      <p>7.1 The following are included in the monthly rent:</p>
+      <ul>
+        <li>Furnished room (bed, desk, wardrobe)</li>
+        <li>High-speed fibre Wi-Fi (subject to a fair-use policy)</li>
+        <li>Water and electricity (standard usage)</li>
+        <li>Regular cleaning of all shared areas</li>
+        <li>24-hour security access</li>
+      </ul>
+      <p>7.2 High-consumption appliances (air conditioners, heaters, hotplates) require prior approval and may incur additional charges.</p>
+      <p>7.3 Hilret Trust does not guarantee uninterrupted utility services due to factors outside its control (load-shedding, municipal outages). Such interruptions do not entitle Residents to a rent reduction.</p>
+    </div>
+
+    <!-- 8 -->
+    <div class="legal-section" id="maintenance">
+      <span class="legal-section__num">Section 8</span>
+      <h2>Maintenance &amp; Repairs</h2>
+      <p>8.1 Hilret Trust is responsible for maintaining the structural integrity of buildings and shared facilities.</p>
+      <p>8.2 Non-urgent maintenance requests must be submitted in writing to the on-site residence manager. Hilret Trust will address non-urgent requests within <strong>5–7 working days</strong>.</p>
+      <p>8.3 Emergencies (burst pipes, electrical faults, security breaches) must be reported immediately using the 24/7 emergency number in the Lease Agreement.</p>
+      <p>8.4 Residents must not carry out repairs or alterations themselves. Any alterations require prior written consent from management.</p>
+      <p>8.5 Damage caused by a Resident or their visitors will be repaired at the Resident's expense.</p>
+    </div>
+
+    <!-- 9 -->
+    <div class="legal-section" id="termination">
+      <span class="legal-section__num">Section 9</span>
+      <h2>Termination &amp; Move-out</h2>
+      <p>9.1 <strong>Resident-initiated:</strong> A minimum of <strong>30 calendar days' written notice</strong> is required before vacating. Early termination without adequate notice results in forfeiture of the deposit.</p>
+      <p>9.2 <strong>Hilret Trust-initiated:</strong> The Lease may be terminated in the event of non-payment, serious breach of these Terms, provision of false information, conduct endangering others, or illegal activity on the premises.</p>
+      <p>9.3 On the vacate date the Resident must remove all belongings, return all keys and access cards, allow a move-out inspection, and leave the room clean and in its original condition.</p>
+      <p>9.4 Belongings left behind after the vacate date may be disposed of after 7 days without liability.</p>
+    </div>
+
+    <!-- 10 -->
+    <div class="legal-section" id="liability">
+      <span class="legal-section__num">Section 10</span>
+      <h2>Liability</h2>
+      <p>10.1 Hilret Trust is not liable for the loss, theft or damage of any personal property. Residents are encouraged to obtain personal contents insurance.</p>
+      <p>10.2 Hilret Trust is not liable for loss or damage arising from circumstances beyond its reasonable control (power outages, natural disasters, civil unrest, or actions of third parties).</p>
+      <p>10.3 Residents indemnify Hilret Trust against any claims arising from injury, loss or damage caused by their own negligence or that of their visitors.</p>
+    </div>
+
+    <!-- 11 -->
+    <div class="legal-section" id="amendments">
+      <span class="legal-section__num">Section 11</span>
+      <h2>Amendments</h2>
+      <p>11.1 Hilret Trust reserves the right to amend these Terms at any time. Residents will receive at least <strong>30 days' written notice</strong> of material changes.</p>
+      <p>11.2 Continued occupation after the effective date of an amendment constitutes acceptance of the updated Terms.</p>
+    </div>
+
+    <!-- 12 -->
+    <div class="legal-section" id="law">
+      <span class="legal-section__num">Section 12</span>
+      <h2>Governing Law</h2>
+      <p>12.1 These Terms are governed by the laws of the Republic of South Africa, including the Rental Housing Act 50 of 1999, the Consumer Protection Act 68 of 2008, and POPIA.</p>
+      <p>12.2 Any dispute shall first be submitted to the Rental Housing Tribunal of KwaZulu-Natal before any court proceedings are initiated.</p>
+    </div>
+
+    <div class="legal-divider"></div>
+
+    <div class="legal-footer-note">
+      <p>Questions? Contact us at <a href="mailto:info@hilrettrust.co.za">info@hilrettrust.co.za</a> or speak to your on-site residence manager.</p>
+      <p style="margin-top:8px">See also: <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="apply.html">Apply for Accommodation</a></p>
+    </div>
+
+  </div>
+
+  <footer id="site-footer"></footer>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

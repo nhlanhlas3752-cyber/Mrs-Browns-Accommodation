@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Hilret Trust Student Accommodation</title>
+  <meta name="description" content="Privacy Policy for Hilret Trust — how we collect, use and protect your personal information in line with POPIA.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+<style>
+.legal-hero {
+  background: var(--clr-primary);
+  padding: 80px 24px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.legal-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 40px;
+  background: var(--clr-bg);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.legal-hero__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin: 0 0 12px;
+  display: block;
+}
+.legal-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+.legal-hero__title span { color: #FE6600; }
+.legal-hero__sub {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,.5);
+  margin: 0;
+}
+.legal-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+.legal-toc {
+  background: #F8F9FB;
+  border-left: 4px solid var(--clr-primary);
+  border-radius: 0 6px 6px 0;
+  padding: 22px 28px;
+  margin-bottom: 52px;
+}
+.legal-toc__title {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--clr-muted);
+  margin: 0 0 14px;
+}
+.legal-toc ol {
+  margin: 0; padding-left: 18px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5px 32px;
+}
+.legal-toc li { font-family: var(--font-body); font-size: 0.85rem; }
+.legal-toc a  { color: var(--clr-primary); text-decoration: none; transition: color .15s; }
+.legal-toc a:hover { color: #FE6600; }
+
+.legal-section { margin-bottom: 48px; }
+.legal-section__num {
+  font-family: var(--font-heading);
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: #FE6600; margin: 0 0 4px; display: block;
+}
+.legal-section h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 700; color: var(--clr-primary);
+  margin: 0 0 18px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--clr-border);
+}
+.legal-section p,
+.legal-section li {
+  font-family: var(--font-body);
+  font-size: 0.95rem; color: var(--clr-text);
+  line-height: 1.8; margin-bottom: 10px;
+}
+.legal-section ul, .legal-section ol { padding-left: 22px; margin-bottom: 14px; }
+.legal-section li  { margin-bottom: 6px; }
+.legal-section strong { color: #111827; font-weight: 600; }
+.legal-section a { color: var(--clr-primary); }
+.legal-section a:hover { color: #FE6600; }
+
+.legal-callout {
+  background: rgba(44,62,107,.06);
+  border-left: 4px solid var(--clr-primary);
+  border-radius: 0 6px 6px 0;
+  padding: 14px 20px; margin: 16px 0;
+  font-family: var(--font-body); font-size: 0.88rem;
+  color: var(--clr-primary); line-height: 1.7;
+}
+
+.data-table {
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-family: var(--font-body); font-size: 0.85rem;
+}
+.data-table th {
+  background: #F3F4F6; font-family: var(--font-heading);
+  font-weight: 700; color: var(--clr-primary);
+  text-align: left; padding: 10px 14px;
+  border: 1px solid var(--clr-border);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: .05em;
+}
+.data-table td {
+  padding: 10px 14px; border: 1px solid var(--clr-border);
+  color: var(--clr-text); vertical-align: top; line-height: 1.65;
+}
+.data-table tr:nth-child(even) td { background: #F9FAFB; }
+
+.legal-divider { height: 1px; background: var(--clr-border); margin: 52px 0; }
+
+.legal-footer-note {
+  text-align: center; padding: 28px 24px;
+  background: #F8F9FB; border: 1px solid var(--clr-border);
+  border-radius: 8px;
+  font-family: var(--font-body); font-size: 0.85rem;
+  color: var(--clr-muted); line-height: 1.7;
+}
+.legal-footer-note a { color: var(--clr-primary); font-weight: 600; text-decoration: none; }
+.legal-footer-note a:hover { color: #FE6600; }
+
+@media (max-width: 640px) {
+  .legal-toc ol { grid-template-columns: 1fr; }
+  .legal-hero   { padding: 60px 20px 48px; }
+  .legal-wrap   { padding: 36px 20px 72px; }
+  .data-table   { font-size: 0.78rem; }
+}
+</style>
+</head>
+<body class="legal-page">
+
+  <header id="site-header"></header>
+
+  <div class="legal-hero">
+    <p class="legal-hero__eyebrow">Legal</p>
+    <h1 class="legal-hero__title">Privacy <span>Policy</span></h1>
+    <p class="legal-hero__sub">Effective date: 1 January 2025 &nbsp;·&nbsp; Hilret Trust (Pty) Ltd &nbsp;·&nbsp; Compliant with POPIA</p>
+  </div>
+
+  <div class="legal-wrap">
+
+    <div class="legal-callout" style="margin-bottom:40px">
+      Hilret Trust is committed to protecting your personal information. This Policy explains what information we collect, how we use it, and your rights under the Protection of Personal Information Act 4 of 2013 (POPIA).
+    </div>
+
+    <div class="legal-toc">
+      <p class="legal-toc__title">Contents</p>
+      <ol>
+        <li><a href="#who-we-are">Who We Are</a></li>
+        <li><a href="#what-we-collect">Information We Collect</a></li>
+        <li><a href="#how-we-use">How We Use Your Information</a></li>
+        <li><a href="#documents">Document Storage</a></li>
+        <li><a href="#sharing">Sharing Your Information</a></li>
+        <li><a href="#security">Data Security</a></li>
+        <li><a href="#retention">Data Retention</a></li>
+        <li><a href="#rights">Your Rights</a></li>
+        <li><a href="#cookies">Website Cookies</a></li>
+        <li><a href="#contact">Contact &amp; Complaints</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. Who We Are -->
+    <div class="legal-section" id="who-we-are">
+      <p class="legal-section__num">Section 1</p>
+      <h2>Who We Are</h2>
+      <p>Hilret Trust (Pty) Ltd (<strong>"Hilret Trust"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, or <strong>"our"</strong>) is the responsible party for the personal information collected through our website, application forms, and in the course of managing our residential properties at Botanic Grove, Berea, Durban, KwaZulu-Natal.</p>
+      <p>For POPIA purposes, Hilret Trust is the <strong>Responsible Party</strong> and has appointed management as the Information Officer.</p>
+    </div>
+
+    <!-- 2. Information We Collect -->
+    <div class="legal-section" id="what-we-collect">
+      <p class="legal-section__num">Section 2</p>
+      <h2>Information We Collect</h2>
+      <p>We collect information in two ways: information you provide to us directly, and information generated through your occupation of our properties.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Examples</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Identity</strong></td>
+            <td>Full name, date of birth, gender, ID number (from ID document)</td>
+            <td>Application form, ID document</td>
+          </tr>
+          <tr>
+            <td><strong>Contact</strong></td>
+            <td>Email address, phone number</td>
+            <td>Application form</td>
+          </tr>
+          <tr>
+            <td><strong>Financial</strong></td>
+            <td>Funding source, bank statement details, bursary amounts</td>
+            <td>Application form, supporting documents</td>
+          </tr>
+          <tr>
+            <td><strong>Education / Employment</strong></td>
+            <td>Institution name, employer, student number, occupation</td>
+            <td>Application form, supporting documents</td>
+          </tr>
+          <tr>
+            <td><strong>Documents</strong></td>
+            <td>Scanned ID/passport, proof of enrollment, bursary letters, bank statements, payslips</td>
+            <td>Application form upload</td>
+          </tr>
+          <tr>
+            <td><strong>Tenancy</strong></td>
+            <td>Lease dates, room assignment, rent payments, deposit status, maintenance requests</td>
+            <td>Generated during tenancy</td>
+          </tr>
+          <tr>
+            <td><strong>Security</strong></td>
+            <td>Entry/exit records, visitor sign-in logs, CCTV footage</td>
+            <td>On-site security systems</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3. How We Use Your Information -->
+    <div class="legal-section" id="how-we-use">
+      <p class="legal-section__num">Section 3</p>
+      <h2>How We Use Your Information</h2>
+      <p>We use your personal information only for lawful, legitimate purposes related to our accommodation services:</p>
+      <ul>
+        <li><strong>Assessing your application</strong> — evaluating eligibility, verifying identity and funding</li>
+        <li><strong>Managing your tenancy</strong> — issuing leases, allocating rooms, tracking rent and deposits</li>
+        <li><strong>Communicating with you</strong> — sending status updates, payment reminders, maintenance notices</li>
+        <li><strong>Safety and security</strong> — maintaining a secure environment for all residents</li>
+        <li><strong>Legal compliance</strong> — meeting obligations under the Rental Housing Act and other applicable laws</li>
+        <li><strong>Resolving disputes</strong> — if a complaint or legal matter arises relating to your tenancy</li>
+      </ul>
+      <p>We will not use your personal information for marketing, profiling, or any purpose unrelated to your accommodation relationship with us without your explicit consent.</p>
+    </div>
+
+    <!-- 4. Document Storage -->
+    <div class="legal-section" id="documents">
+      <p class="legal-section__num">Section 4</p>
+      <h2>Document Storage</h2>
+      <p>4.1 Supporting documents you upload during your application (ID, proof of enrollment, bank statements, etc.) are stored securely on our servers.</p>
+      <p>4.2 Uploaded documents are accessible only to authorised Hilret Trust staff involved in processing applications and managing tenancies.</p>
+      <p>4.3 We accept documents in PDF, JPG, and PNG format. Files may not exceed 5 MB each.</p>
+      <p>4.4 Documents are retained for the period specified in Section 7 (Data Retention) and are then securely deleted.</p>
+      <div class="legal-callout">
+        Your identity documents (ID, passport) are treated as special personal information and are processed with additional care. They are used only to verify your identity and are never shared with third parties for commercial purposes.
+      </div>
+    </div>
+
+    <!-- 5. Sharing Your Information -->
+    <div class="legal-section" id="sharing">
+      <p class="legal-section__num">Section 5</p>
+      <h2>Sharing Your Information</h2>
+      <p>5.1 We do not sell, rent, or trade your personal information to any third party.</p>
+      <p>5.2 We may share your information with the following parties only where necessary:</p>
+      <ul>
+        <li><strong>Your funding provider</strong> (bursary institution or employer) — to confirm placement and issue invoices if you have consented to this</li>
+        <li><strong>Service providers</strong> — maintenance contractors or security companies operating at our properties, who are bound by confidentiality agreements</li>
+        <li><strong>Law enforcement or regulators</strong> — when required by law, court order, or to protect the safety of residents and staff</li>
+        <li><strong>The Rental Housing Tribunal</strong> — in the event of a formal dispute</li>
+      </ul>
+      <p>5.3 Any third party receiving your information is required to handle it in accordance with POPIA and may not use it for any purpose beyond that for which it was shared.</p>
+    </div>
+
+    <!-- 6. Data Security -->
+    <div class="legal-section" id="security">
+      <p class="legal-section__num">Section 6</p>
+      <h2>Data Security</h2>
+      <p>6.1 We implement reasonable technical and organisational measures to protect your personal information against loss, theft, unauthorised access, disclosure, or misuse.</p>
+      <p>6.2 Our website and management systems use password-protected access with role-based permissions. Staff can only access the information required to perform their specific duties.</p>
+      <p>6.3 Document uploads are stored in a secured, non-public directory and are not accessible via direct URL without authenticated access.</p>
+      <p>6.4 Despite our efforts, no data transmission over the internet or storage system is completely secure. We cannot guarantee absolute security, but we promptly investigate and notify affected individuals if a breach occurs, in line with POPIA requirements.</p>
+    </div>
+
+    <!-- 7. Data Retention -->
+    <div class="legal-section" id="retention">
+      <p class="legal-section__num">Section 7</p>
+      <h2>Data Retention</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Data Type</th><th>Retention Period</th><th>Reason</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Unsuccessful application records</td>
+            <td>6 months after decision</td>
+            <td>In case of re-application or dispute</td>
+          </tr>
+          <tr>
+            <td>Uploaded application documents</td>
+            <td>12 months after application closure</td>
+            <td>Compliance and dispute resolution</td>
+          </tr>
+          <tr>
+            <td>Active tenancy records</td>
+            <td>Duration of tenancy + 5 years</td>
+            <td>Legal and financial compliance</td>
+          </tr>
+          <tr>
+            <td>Payment and lease records</td>
+            <td>5 years after lease end</td>
+            <td>SARS and legal requirements</td>
+          </tr>
+          <tr>
+            <td>CCTV footage</td>
+            <td>30 days (rolling)</td>
+            <td>Security and incident review</td>
+          </tr>
+          <tr>
+            <td>Contact enquiries</td>
+            <td>12 months</td>
+            <td>Customer service follow-up</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>After the applicable retention period, personal information is securely deleted or anonymised.</p>
+    </div>
+
+    <!-- 8. Your Rights -->
+    <div class="legal-section" id="rights">
+      <p class="legal-section__num">Section 8</p>
+      <h2>Your Rights Under POPIA</h2>
+      <p>Under the Protection of Personal Information Act 4 of 2013, you have the following rights regarding your personal information held by Hilret Trust:</p>
+      <ul>
+        <li><strong>Right to access</strong> — you may request a copy of the personal information we hold about you</li>
+        <li><strong>Right to correction</strong> — you may request that we correct any inaccurate or incomplete information</li>
+        <li><strong>Right to deletion</strong> — you may request that we delete your information where it is no longer necessary for the purpose it was collected, subject to our legal retention obligations</li>
+        <li><strong>Right to object</strong> — you may object to the processing of your personal information in certain circumstances</li>
+        <li><strong>Right to withdraw consent</strong> — where processing is based on your consent, you may withdraw it at any time (this does not affect the lawfulness of processing before withdrawal)</li>
+        <li><strong>Right to lodge a complaint</strong> — you may complain to the Information Regulator of South Africa if you believe your rights have been infringed</li>
+      </ul>
+      <p>To exercise any of these rights, please contact us using the details in Section 10.</p>
+    </div>
+
+    <!-- 9. Cookies -->
+    <div class="legal-section" id="cookies">
+      <p class="legal-section__num">Section 9</p>
+      <h2>Website Cookies</h2>
+      <p>9.1 Our website uses session cookies to maintain your browser session while completing the application form. These cookies contain no personal information and are deleted when you close your browser.</p>
+      <p>9.2 We do not use tracking cookies, advertising cookies, or third-party analytics that identify individual users.</p>
+      <p>9.3 We use Google Fonts to load typography. Google may set a cookie as part of font delivery. Please refer to Google's Privacy Policy for details.</p>
+    </div>
+
+    <!-- 10. Contact -->
+    <div class="legal-section" id="contact">
+      <p class="legal-section__num">Section 10</p>
+      <h2>Contact &amp; Complaints</h2>
+      <p>For any queries relating to this Privacy Policy, or to exercise your rights under POPIA, please contact our Information Officer:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:info@hilrettrust.co.za" style="color:#2C3E6B">info@hilrettrust.co.za</a></li>
+        <li><strong>Address:</strong> Hilret Trust (Pty) Ltd, Botanic Grove, Berea, Durban, KwaZulu-Natal</li>
+      </ul>
+      <p>If you are unsatisfied with our response, you have the right to lodge a complaint with the <strong>Information Regulator of South Africa</strong>:</p>
+      <ul>
+        <li>Website: <a href="https://www.justice.gov.za/inforeg/" target="_blank" rel="noopener" style="color:#2C3E6B">www.justice.gov.za/inforeg</a></li>
+        <li>Email: inforeg@justice.gov.za</li>
+      </ul>
+    </div>
+
+    <div class="legal-divider"></div>
+
+    <div class="legal-footer-note">
+      <p>This Privacy Policy is reviewed annually. Last updated: <strong>1 January 2025</strong>.</p>
+      <p style="margin-top:8px">See also: <a href="terms.html">Terms &amp; Conditions</a> &nbsp;·&nbsp; <a href="apply.html">Apply for Accommodation</a></p>
+    </div>
+
+  </div>
+
+  <footer id="site-footer"></footer>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

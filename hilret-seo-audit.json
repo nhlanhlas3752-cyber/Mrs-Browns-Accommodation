@@ -1,0 +1,179 @@
+{
+  "id": "hilret-seo-2026",
+  "name": "Hilret Trust — SEO Audit",
+  "auditor": "Claude Code",
+  "createdAt": "2026-07-27T00:00:00.000Z",
+  "updatedAt": "2026-07-27T00:00:00.000Z",
+  "results": {
+    "s1-1": "risk", "s1-2": "risk", "s1-3": "pass", "s1-4": "pass",
+    "s1-5": "pass", "s1-6": "risk", "s1-7": "pass", "s1-8": "pass",
+    "s1-9": "pass", "s1-10": "risk", "s1-11": "na",  "s1-12": "na",
+
+    "s2-1": "pass", "s2-2": "pass", "s2-3": "risk", "s2-4": "pass",
+    "s2-5": "pass", "s2-6": "pass", "s2-7": "pass", "s2-8": "fail",
+    "s2-9": "fail", "s2-10": "fail",
+
+    "s3-1": "pass", "s3-2": "pass", "s3-3": "pass", "s3-4": "pass",
+    "s3-5": "fail", "s3-6": "na",   "s3-7": "risk", "s3-8": "fail",
+
+    "s4-1": "pass", "s4-2": "pass", "s4-3": "pass", "s4-4": "fail",
+    "s4-5": "na",   "s4-6": "risk", "s4-7": "pass", "s4-8": "pass",
+    "s4-9": "na",   "s4-10": "na",  "s4-11": "fail", "s4-12": "pass",
+
+    "s5-1": "risk", "s5-2": "risk", "s5-3": "pass", "s5-4": "pass",
+    "s5-5": "pass", "s5-6": "na",   "s5-7": "pass", "s5-8": "na",
+    "s5-9": "risk", "s5-10": "risk","s5-11": "fail", "s5-12": "na",
+
+    "s6-1": "pass", "s6-2": "pass", "s6-3": "pass", "s6-4": "pass",
+    "s6-5": "na",   "s6-6": "na",   "s6-7": "risk", "s6-8": "fail",
+    "s6-9": "risk", "s6-10": "na",
+
+    "s7-1": "risk", "s7-2": "pass", "s7-3": "risk", "s7-4": "pass",
+    "s7-5": "fail", "s7-6": "pass", "s7-7": "risk", "s7-8": "pass",
+    "s7-9": "risk", "s7-10": "fail",
+
+    "s8-1": "risk", "s8-2": "risk", "s8-3": "risk", "s8-4": "risk",
+    "s8-5": "fail", "s8-6": "fail", "s8-7": "pass", "s8-8": "risk",
+    "s8-9": "risk", "s8-10": "fail","s8-11": "pass", "s8-12": "pass",
+
+    "s9-1": "pass", "s9-2": "pass", "s9-3": "risk", "s9-4": "risk",
+    "s9-5": "pass", "s9-6": "risk", "s9-7": "fail", "s9-8": "pass",
+
+    "s10-1": "risk", "s10-2": "pass", "s10-3": "fail", "s10-4": "risk",
+    "s10-5": "fail", "s10-6": "pass", "s10-7": "risk", "s10-8": "risk",
+    "s10-9": "fail", "s10-10": "pass",
+
+    "s11-1": "pass", "s11-2": "risk", "s11-3": "risk", "s11-4": "risk",
+    "s11-5": "risk", "s11-6": "pass", "s11-7": "pass", "s11-8": "fail",
+    "s11-9": "pass", "s11-10": "pass","s11-11": "fail","s11-12": "pass",
+
+    "s12-1": "fail", "s12-2": "risk", "s12-3": "pass", "s12-4": "risk",
+    "s12-5": "pass", "s12-6": "fail", "s12-7": "fail", "s12-8": "fail",
+    "s12-9": "pass", "s12-10": "pass",
+
+    "s13-1": "pass", "s13-2": "na",   "s13-3": "pass", "s13-4": "na",
+    "s13-5": "na",   "s13-6": "fail", "s13-7": "risk", "s13-8": "na",
+    "s13-9": "risk", "s13-10": "na",
+
+    "s14-1": "na",   "s14-2": "na",   "s14-3": "na",   "s14-4": "na",
+    "s14-5": "pass", "s14-6": "fail", "s14-7": "pass", "s14-8": "na",
+
+    "s15-1": "fail", "s15-2": "fail", "s15-3": "fail", "s15-4": "fail",
+    "s15-5": "fail", "s15-6": "fail", "s15-7": "fail", "s15-8": "fail",
+    "s15-9": "fail", "s15-10": "fail",
+
+    "s16-1": "pass", "s16-2": "risk", "s16-3": "na",   "s16-4": "risk",
+    "s16-5": "fail", "s16-6": "pass", "s16-7": "fail", "s16-8": "pass",
+    "s16-9": "fail", "s16-10": "risk",
+
+    "s17-1": "risk", "s17-2": "risk", "s17-3": "risk", "s17-4": "pass",
+    "s17-5": "pass", "s17-6": "fail", "s17-7": "pass", "s17-8": "na",
+
+    "s18-1": "pass", "s18-2": "pass", "s18-3": "na",   "s18-4": "pass",
+    "s18-5": "pass", "s18-6": "na",   "s18-7": "fail", "s18-8": "fail",
+    "s18-9": "fail", "s18-10": "fail","s18-11": "fail","s18-12": "fail"
+  },
+  "notes": {
+    "s1-1":  "All page titles exceed 60 chars. index=65, about=65, residences=71, apply=69, faqs=66, house29=72. Shorten to 55-60 chars to avoid truncation in SERPs",
+    "s1-2":  "Most meta descriptions exceed 160 chars. index=173, about=189, apply=179, faqs=174, house29=181. Trim to 150-160 chars",
+    "s1-6":  "terms.html and privacy.html are missing canonical tags. Add self-referencing canonicals",
+    "s1-10": "Some pages lack a clear CTA in the meta description. Add 'Apply online today' or 'View rooms' where missing",
+
+    "s2-3":  "og:image is set but the physical image dimensions are unverified. Target 1200x630px minimum at under 1MB",
+    "s2-8":  "og:image:width and og:image:height not declared on any page. Add to all pages",
+    "s2-9":  "og:image:alt not set on any page. Add descriptive alt text for accessibility and social shares",
+    "s2-10": "Test all OG tags with Facebook Sharing Debugger after deployment",
+
+    "s3-5":  "twitter:site @handle not set. Add meta name='twitter:site' with the brand Twitter handle",
+    "s3-7":  "Twitter card images should be under 5MB. Verify actual file sizes of og:image assets",
+    "s3-8":  "Validate Twitter Cards at cards-dev.twitter.com/validator after deployment",
+
+    "s4-4":  "BreadcrumbList JSON-LD missing on about.html, residences.html, faqs.html. Apply and residence-view pages have it. Add to all inner pages",
+    "s4-6":  "Residence detail pages (residence-view-*.html) lack standalone structured data. Add LodgingBusiness or HotelRoom schema per property",
+    "s4-11": "Validate all structured data with Google Rich Results Test (search.google.com/test/rich-results) before launch",
+
+    "s5-1":  "HTTPS redirect is commented out in .htaccess. Uncomment after SSL is confirmed on live server",
+    "s5-2":  "Mixed content status unknown until live. Check browser console after HTTPS is enabled",
+    "s5-9":  "No WWW to non-WWW (or vice versa) 301 redirect configured. Add to .htaccess after deciding canonical domain",
+    "s5-10": "Internal links not crawl-validated. Run Screaming Frog or similar after deployment",
+    "s5-11": "Google Search Console not set up. Set up property and verify ownership via DNS or HTML file after deployment",
+
+    "s6-7":  "Header, footer, and some gallery cards are injected by main.js. Googlebot renders JS but delayed. Consider pre-rendering critical nav content in HTML",
+    "s6-8":  "Dashboard pages (/dashboard/) are excluded via robots.txt (Disallow: /dashboard/) but have no <meta name='robots' content='noindex'> as backup. Add to head.php",
+
+    "s7-1":  "URLs use .html extension and some filenames are non-descriptive (residence-view-29.html vs /rooms/house-29). Acceptable for this site scale",
+    "s7-3":  "Flat URL structure. All pages are at the root level. Fine for small site but consider /residences/house-29/ structure for future",
+    "s7-5":  "No visible breadcrumb navigation on any page. Add HTML breadcrumb trail on inner pages (about, residences, faqs, residence detail pages)",
+    "s7-7":  "Some pages may be orphaned. Verify all pages are linked from at least one other page",
+    "s7-9":  "Some links use generic anchor text ('View Residence', 'Browse rooms'). Make more specific where possible",
+    "s7-10": "No HTML sitemap page. Add a /sitemap.html page listing all public pages for users",
+
+    "s8-1":  "Hero video (hero-video.mp4) may delay LCP significantly. Add a poster image and test LCP with PageSpeed Insights",
+    "s8-2":  "INP not tested. Run PageSpeed Insights after deployment",
+    "s8-3":  "JS-injected header/footer could cause CLS. Add explicit min-height to header/footer placeholders",
+    "s8-4":  "Run PageSpeed Insights on mobile for all 3 key pages after deployment. Target 75+",
+    "s8-5":  "All images are JPEG/PNG. Convert to WebP for 25-35% file size savings. Use <picture> element with WebP + JPEG fallback",
+    "s8-6":  "Carousel and gallery images have no explicit width/height attributes causing layout shift (CLS). Add dimensions to all <img> tags",
+    "s8-8":  "Google Fonts loaded via <link> — slightly render-blocking. Consider self-hosting fonts or using font-display=swap (already added)",
+    "s8-9":  "No browser cache headers for static assets (CSS, JS, images). Add mod_expires rules to .htaccess",
+    "s8-10": "No CDN in use. After deployment, consider Cloudflare free tier for caching and global delivery",
+
+    "s9-3":  "Some nav buttons and toggle elements may be under 48px. Review on mobile viewport in DevTools",
+    "s9-4":  "Some eyebrow labels and metadata text is 10-12px. Ensure body reading text is minimum 16px",
+    "s9-6":  "Core Web Vitals on mobile not tested. Run PageSpeed Insights after deployment",
+    "s9-7":  "Not tested on real mobile devices. Test on at least one Android and one iPhone before launch",
+
+    "s10-1": "Some images have generic or auto-generated alt text. Review all img alt attributes especially in carousel and gallery",
+    "s10-3": "Image filenames: DSC_0001.jpg, DSC_0012.jpg, hause 29.jpg, IMG-20251001-WA0060.jpg are not descriptive. Rename to e.g. hilret-trust-house-29-botanic-grove.jpg",
+    "s10-4": "Image file sizes not verified. Run images through TinyPNG or Squoosh to ensure under 200KB for standard images",
+    "s10-5": "All images are JPEG/PNG. Generate WebP versions and serve with <picture> element",
+    "s10-7": "Review decorative images — some SVG icons and background elements may not need alt text",
+    "s10-8": "Hero video (hero-video.mp4) has no captions or transcript. Add a text description nearby for accessibility and SEO",
+    "s10-9": "No image sitemap submitted. After adding to Google Search Console, submit an image sitemap for property photos",
+
+    "s11-2": "index.html H1 is 'Your home away from home' — contains no primary keyword. Consider 'Furnished Rooms to Rent in Berea Durban | Hilret Trust' or similar",
+    "s11-3": "Some heading hierarchy may have gaps. Audit each page to ensure H1→H2→H3 order with no skipped levels",
+    "s11-4": "Primary content is partially JS-injected (header, footer, gallery). First visible HTML content may not include the primary keyword",
+    "s11-5": "Apply.html is mostly a form — minimal body copy. Add a short intro paragraph explaining what the application process involves",
+    "s11-8": "No outbound links to authoritative sources (DUT, City of eThekwini, etc.). Add contextual links where natural",
+    "s11-11":"No E-E-A-T signals visible. No author bio, no management team info, no physical address visible on pages (except schema). Add a visible contact address",
+
+    "s12-1": "Google Business Profile status unknown. Claim and verify GBP at business.google.com as priority after launch",
+    "s12-2": "NAP on website looks consistent (Botanic Grove, Berea, Durban, 031-000-1234) but not cross-checked against directories",
+    "s12-4": "No dedicated area landing page for 'Botanic Grove accommodation' keyword. Consider creating /botanic-grove.html",
+    "s12-6": "No Google Map embedded on the site. Add a map iframe to the footer contact section",
+    "s12-7": "Not listed in South African directories (Property24, Private Property, Trovit). Submit the business",
+    "s12-8": "No reviews or testimonials on the site. Add a testimonials section or link to Google Reviews",
+
+    "s13-6": "Residence detail pages (house 29, 35, 39, 25) have no BreadcrumbList schema. Add Home > Residences > House 29",
+    "s13-9": "Residence detail pages don't link to similar/other properties. Add 'See other residences' section",
+
+    "s14-6": "Google Search Console not set up. Set up and configure country targeting to South Africa",
+
+    "s15-1": "No Google Analytics 4 installed. Add GA4 measurement ID to all pages. Consider Google Tag Manager",
+    "s15-2": "Google Search Console not verified. Priority: set up after deployment via DNS TXT record",
+    "s15-3": "CWV monitoring requires GSC to be set up first",
+    "s15-4": "404 monitoring not configured. Set up GSC and enable email alerts for crawl errors",
+    "s15-7": "Set up Bing Webmaster Tools at bing.com/webmasters — free and uses GSC import",
+    "s15-8": "No GA4 conversion events configured. After GA4 setup, add events for: form submission, contact enquiry",
+    "s15-9": "No keyword rank tracking. After launch use Google Search Console's Performance tab or a free tool like Ubersuggest",
+
+    "s16-2": "FAQ answers in faqs.html could be more snippet-optimized. Add concise 40-60 word direct answers at the top of each accordion",
+    "s16-4": "Homepage content is partially JS-rendered. AI crawlers may have difficulty extracting the direct accommodation value proposition",
+    "s16-5": "No E-E-A-T signals. Add management team info, years in business, number of properties managed",
+    "s16-7": "No speakable schema. Consider adding to key FAQ items for voice search",
+    "s16-9": "No publication or last-reviewed dates visible on any page. Dates help AI overviews assess freshness",
+
+    "s17-1": "SSL not yet live. Enable on hosting panel, uncomment HTTPS redirect in .htaccess, then test",
+    "s17-2": "Mixed content will need checking after HTTPS is enabled — some hardcoded http:// references may exist",
+    "s17-3": "New site, likely clean. Verify at transparencyreport.google.com/safe-browsing after launch",
+    "s17-6": "No cookie consent banner. Site uses session cookies (functional, exempt) and Google Fonts (third-party). Add a simple banner for POPIA compliance",
+
+    "s18-7": "Validate structured data at search.google.com/test/rich-results before launch",
+    "s18-8": "Test OG tags at developers.facebook.com/tools/debug after deployment",
+    "s18-9": "Test Twitter Cards at cards-dev.twitter.com/validator after deployment",
+    "s18-10":"Run Screaming Frog Free (500 URL limit) across the site to find broken links and redirect chains",
+    "s18-11":"Run PageSpeed Insights on index.html, residences.html, and apply.html — target mobile score 75+",
+    "s18-12":"After deployment, submit sitemap in Google Search Console and request indexing of the homepage"
+  }
+}

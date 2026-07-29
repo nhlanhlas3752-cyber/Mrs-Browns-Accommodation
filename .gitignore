@@ -1,0 +1,30 @@
+# Sensitive credentials - NEVER commit
+backend/config.php
+
+# Log files
+*.txt
+error_log*
+php_error_log*
+logs_list*
+ssl_log*
+ht_test_check*
+
+# Temp / installer files
+_extract.php
+_install.php
+setup.php
+ht_diag.php
+
+# Windows system files
+desktop.ini
+Thumbs.db
+
+# Download cache
+*.download
+
+# Uploads (user-generated content)
+uploads/
+
+# Node / composer artifacts
+node_modules/
+vendor/
