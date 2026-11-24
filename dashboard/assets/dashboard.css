@@ -579,6 +579,25 @@ button { cursor: pointer; font-family: var(--font-body); }
 .data-table tbody tr:last-child td { border-bottom: none; }
 .data-table tbody tr { transition: background var(--ease); }
 .data-table tbody tr:hover { background: var(--surface-2); }
+.tr--new { background: rgba(39,174,96,.05); }
+.tr--new td:first-child { border-left: 3px solid var(--green); }
+.tr--new:hover { background: rgba(39,174,96,.09) !important; }
+.badge--app-new {
+  display:inline-flex; align-items:center; gap:4px;
+  background:#F0FDF4; color:#14532D; border:1px solid #86EFAC;
+  border-radius:99px; font-size:.6rem; font-weight:700;
+  padding:1px 7px; letter-spacing:.04em; text-transform:uppercase;
+  vertical-align:middle; margin-left:6px; white-space:nowrap;
+}
+.badge--app-new::before {
+  content:''; display:inline-block; width:5px; height:5px;
+  border-radius:50%; background:var(--green);
+  animation: new-pulse 1.6s ease-in-out infinite;
+}
+@keyframes new-pulse {
+  0%, 100% { opacity:1; transform:scale(1); }
+  50% { opacity:.35; transform:scale(.65); }
+}
 
 /* ══ BADGES ════════════════════════════════════════════════════════ */
 .badge {

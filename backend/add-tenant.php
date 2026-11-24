@@ -10,6 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+if (!csrf_verify()) {
+    http_response_code(403);
+    echo json_encode(['success' => false, 'error' => 'Invalid CSRF token.']);
+    exit;
+}
+
 $pdo = db();
 
 $first_name     = trim($_POST['first_name']     ?? '');
@@ -96,7 +102,9 @@ try {
     $pdo->prepare('UPDATE rooms SET status = "occupied" WHERE id = ?')->execute([$room_id]);
 
     // 4. Recalculate available_rooms for the residence
-    $avail = (int) $pdo->query("SELECT COUNT(*) FROM rooms WHERE residence_id = {$room['res_id']} AND status = 'available'")->fetchColumn();
+    $availStmt = $pdo->prepare("SELECT COUNT(*) FROM rooms WHERE residence_id = ? AND status = 'available'");
+    $availStmt->execute([$room['res_id']]);
+    $avail = (int) $availStmt->fetchColumn();
     $pdo->prepare('UPDATE residences SET available_rooms = ? WHERE id = ?')->execute([$avail, $room['res_id']]);
 
     $pdo->commit();

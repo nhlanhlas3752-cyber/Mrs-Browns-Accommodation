@@ -208,6 +208,7 @@ CREATE TABLE IF NOT EXISTS applications (
   doc_sponsorship_path VARCHAR(255)  NULL,
   doc_income_path      VARCHAR(255)  NULL,
   submitted_at        TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
+  viewed_at           DATETIME      NULL,
   FOREIGN KEY (reviewed_by) REFERENCES users(id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 

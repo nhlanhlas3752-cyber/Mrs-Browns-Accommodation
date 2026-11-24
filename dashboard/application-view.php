@@ -13,6 +13,12 @@ $app->execute([$id]);
 $app  = $app->fetch();
 if (!$app) { header('Location: applications.php'); exit; }
 
+// Mark as viewed on first open
+if (empty($app['viewed_at'])) {
+    $pdo->prepare('UPDATE applications SET viewed_at = NOW() WHERE id = ?')->execute([$id]);
+    $app['viewed_at'] = date('Y-m-d H:i:s');
+}
+
 // Handle status update
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_status'])) {
     $newStatus   = $_POST['new_status'];

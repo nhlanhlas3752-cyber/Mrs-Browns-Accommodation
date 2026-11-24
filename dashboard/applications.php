@@ -33,8 +33,12 @@ $counts = $pdo->query(
 <main class="dash-content">
 
   <?php if (!empty($_GET['msg'])): ?>
-    <div class="alert alert--<?= $_GET['msg'] === 'updated' ? 'success' : 'error' ?>" data-auto-dismiss>
-      <?= $_GET['msg'] === 'updated' ? 'Application status updated successfully.' : 'An error occurred.' ?>
+    <?php $msg = $_GET['msg']; ?>
+    <div class="alert alert--<?= in_array($msg, ['updated','deleted']) ? 'success' : 'error' ?>" data-auto-dismiss>
+      <?= $msg === 'updated'      ? 'Application status updated successfully.'
+        : ($msg === 'deleted'     ? 'Application deleted successfully.'
+        : ($msg === 'has_resident'? 'Cannot delete — this applicant has an active tenant record. Remove them from residents first.'
+        : 'An error occurred.')) ?>
     </div>
   <?php endif; ?>
 
@@ -84,11 +88,14 @@ $counts = $pdo->query(
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($apps as $a): ?>
-          <tr>
+          <?php foreach ($apps as $a):
+            $isNew = empty($a['viewed_at']);
+          ?>
+          <tr class="<?= $isNew ? 'tr--new' : '' ?>">
             <td class="text-muted text-sm"><?= $a['id'] ?></td>
             <td>
               <span class="font-medium"><?= htmlspecialchars($a['first_name'] . ' ' . $a['last_name']) ?></span>
+              <?php if ($isNew): ?><span class="badge--app-new">New</span><?php endif; ?>
               <div class="text-muted text-xs"><?= htmlspecialchars($a['gender']) ?></div>
             </td>
             <td>
@@ -101,7 +108,16 @@ $counts = $pdo->query(
             <td><span class="badge badge--<?= $a['status'] ?>"><span class="status-dot"></span> <?= ucfirst($a['status']) ?></span></td>
             <td class="text-muted text-sm"><?= date('d M Y', strtotime($a['submitted_at'])) ?></td>
             <td>
-              <a href="application-view.php?id=<?= $a['id'] ?>" class="btn btn--ghost btn--sm">View</a>
+              <div style="display:flex;gap:6px;align-items:center;white-space:nowrap">
+                <a href="application-view.php?id=<?= $a['id'] ?>" class="btn btn--ghost btn--sm">View</a>
+                <form method="POST" action="/backend/delete-application.php" onsubmit="return confirmDelete(<?= $a['id'] ?>, '<?= htmlspecialchars(addslashes($a['first_name'].' '.$a['last_name'])) ?>')">
+                  <?= csrf_field() ?>
+                  <input type="hidden" name="id" value="<?= $a['id'] ?>">
+                  <button type="submit" class="btn btn--ghost btn--sm" style="color:var(--red);border-color:transparent" title="Delete application">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                  </button>
+                </form>
+              </div>
             </td>
           </tr>
           <?php endforeach; ?>
@@ -122,4 +138,9 @@ $counts = $pdo->query(
   </div>
 
 </main>
+<script>
+function confirmDelete(id, name) {
+  return window.confirm('Delete application from ' + name + '?\n\nThis cannot be undone.');
+}
+</script>
 <?php include __DIR__ . '/partials/foot.php'; ?>

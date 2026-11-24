@@ -61,6 +61,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_room'])) {
 
 /* ── Data ─────────────────────────────────────────────────────── */
 $allResidences = $pdo->query('SELECT id, name FROM residences WHERE status="active" ORDER BY name')->fetchAll();
+
+/* ── Available rooms for Add Tenant modal ────────────────────── */
+$availableRoomsAll = $pdo->query(
+    "SELECT rm.id, rm.room_number, rm.type, rm.floor, rm.price, rm.residence_id,
+            res.name AS block_name
+     FROM rooms rm
+     JOIN residences res ON res.id = rm.residence_id
+     WHERE rm.status = 'available'
+     ORDER BY res.name, rm.floor, rm.room_number"
+)->fetchAll();
+$roomsByBlockAll = [];
+foreach ($availableRoomsAll as $ar) {
+    $roomsByBlockAll[$ar['residence_id']][] = $ar;
+}
 $residenceId   = (int)($_GET['residence_id'] ?? ($allResidences[0]['id'] ?? 0));
 $residence     = null;
 $rooms         = [];
@@ -109,7 +123,7 @@ $pageSubtitle = $residence ? 'Managing ' . $residence['name'] . ' — Botanic Gr
 <main class="dash-content">
 
   <?php if (!empty($_GET['msg'])): ?>
-    <?php $msgs = ['updated'=>'Room updated.','added'=>'Room added.','tenant_added'=>'Tenant assigned successfully.']; ?>
+    <?php $msgs = ['updated'=>'Room updated.','added'=>'Room added.','tenant_added'=>'Tenant added and room assigned successfully.']; ?>
     <div class="alert alert--success" data-auto-dismiss>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
       <?= htmlspecialchars($msgs[$_GET['msg']] ?? 'Done.') ?>
@@ -124,8 +138,12 @@ $pageSubtitle = $residence ? 'Managing ' . $residence['name'] . ' — Botanic Gr
       <?= htmlspecialchars($r['name']) ?>
     </a>
     <?php endforeach; ?>
+    <button onclick="openModal('add-tenant-modal-r')"
+            class="btn btn--primary btn--sm" style="margin-left:auto">
+      + Add Tenant
+    </button>
     <button onclick="openModal('add-room-modal')"
-            class="btn btn--amber btn--sm" style="margin-left:auto">
+            class="btn btn--amber btn--sm">
       + Add Room
     </button>
   </div>
@@ -620,6 +638,125 @@ $pageSubtitle = $residence ? 'Managing ' . $residence['name'] . ' — Botanic Gr
 </div>
 
 
+<!-- ══ ADD TENANT MODAL (top-level) ════════════════════════════ -->
+<div class="modal-backdrop" id="add-tenant-modal-r">
+  <div class="modal" style="max-width:620px">
+    <div class="modal-header">
+      <h3>Add Tenant</h3>
+      <button class="modal-close">&times;</button>
+    </div>
+    <form id="add-tenant-form-r">
+      <?= csrf_field() ?>
+      <div class="modal-body" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+        <!-- Room selection -->
+        <div style="grid-column:1/-1">
+          <p style="font-family:var(--font-head);font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Room Assignment</p>
+        </div>
+        <div class="field">
+          <label>Block / Residence <span style="color:var(--red)">*</span></label>
+          <select id="atr-block" onchange="atrUpdateRooms()" required>
+            <option value="">— Select block —</option>
+            <?php foreach ($allResidences as $res): ?>
+              <?php if (!empty($roomsByBlockAll[$res['id']])): ?>
+              <option value="<?= $res['id'] ?>"><?= htmlspecialchars($res['name']) ?></option>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </select>
+        </div>
+        <div class="field">
+          <label>Available Room <span style="color:var(--red)">*</span></label>
+          <select name="room_id" id="atr-room" onchange="atrRoomSelected()" required disabled>
+            <option value="">— Select block first —</option>
+          </select>
+        </div>
+
+        <?php if (empty($availableRoomsAll)): ?>
+        <div style="grid-column:1/-1;padding:10px 14px;background:#fffbeb;border:1px solid #fcd34d;border-radius:var(--r-sm);font-size:.8rem;color:#92400e">
+          No available rooms at the moment. Mark a room as "Available" first.
+        </div>
+        <?php endif; ?>
+
+        <!-- Personal details -->
+        <div style="grid-column:1/-1;border-top:1px solid var(--border-lt);padding-top:12px">
+          <p style="font-family:var(--font-head);font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--stone)">Tenant Details</p>
+        </div>
+        <div class="field">
+          <label>First Name <span style="color:var(--red)">*</span></label>
+          <input type="text" name="first_name" required placeholder="e.g. Thabo">
+        </div>
+        <div class="field">
+          <label>Last Name <span style="color:var(--red)">*</span></label>
+          <input type="text" name="last_name" required placeholder="e.g. Mokoena">
+        </div>
+        <div class="field">
+          <label>Email Address <span style="color:var(--red)">*</span></label>
+          <input type="email" name="email" required placeholder="tenant@email.com">
+        </div>
+        <div class="field">
+          <label>Phone Number <span style="color:var(--red)">*</span></label>
+          <input type="tel" name="phone" required placeholder="082 000 0000">
+        </div>
+        <div class="field">
+          <label>Date of Birth</label>
+          <input type="date" name="dob">
+        </div>
+        <div class="field">
+          <label>Gender</label>
+          <select name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <!-- Lease details -->
+        <div style="grid-column:1/-1;border-top:1px solid var(--border-lt);padding-top:12px">
+          <p style="font-family:var(--font-head);font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--stone)">Lease Details</p>
+        </div>
+        <div class="field">
+          <label>Lease Start <span style="color:var(--red)">*</span></label>
+          <input type="date" name="lease_start" id="atr-lease-start" required>
+        </div>
+        <div class="field">
+          <label>Lease End <span style="color:var(--red)">*</span></label>
+          <input type="date" name="lease_end" id="atr-lease-end" required>
+        </div>
+        <div class="field">
+          <label>Monthly Rent (R)</label>
+          <input type="number" name="monthly_rent" id="atr-rent" step="50" min="0" placeholder="Auto-filled from room">
+        </div>
+        <div class="field">
+          <label>Deposit Amount (R)</label>
+          <input type="number" name="deposit_amount" id="atr-deposit" step="50" min="0" placeholder="Auto-filled from room">
+        </div>
+        <div class="field">
+          <label>Deposit Status</label>
+          <select name="deposit_status">
+            <option value="unpaid">Unpaid — to be collected</option>
+            <option value="paid">Paid — already received</option>
+          </select>
+        </div>
+        <div class="field" style="grid-column:1/-1">
+          <label>Notes <span class="text-muted">(optional)</span></label>
+          <textarea name="notes" rows="2" placeholder="Any special requirements or notes…"></textarea>
+        </div>
+
+      </div>
+
+      <div id="atr-error" style="display:none;margin:0 22px 4px;padding:10px 14px;background:var(--red-dim);color:var(--red);border-radius:var(--r-sm);font-size:.8rem;border:1px solid #fca5a5"></div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn--ghost modal-close">Cancel</button>
+        <button type="submit" class="btn btn--primary" id="atr-submit">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Add Tenant
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- ══ ADD ROOM MODAL ═══════════════════════════════════════════ -->
 <div class="modal-backdrop" id="add-room-modal">
   <div class="modal" style="max-width:460px">
@@ -789,6 +926,74 @@ document.getElementById('assign-form').addEventListener('submit', function(e) {
       errBox.style.display = 'block';
       btn.disabled = false;
       btn.innerHTML = 'Assign Tenant';
+    });
+});
+
+/* ── Top-level Add Tenant modal ──────────────────────────── */
+var atrRooms = <?= json_encode($roomsByBlockAll) ?>;
+
+function atrUpdateRooms() {
+  var blockId = document.getElementById('atr-block').value;
+  var roomSel = document.getElementById('atr-room');
+  roomSel.innerHTML = '<option value="">— Select room —</option>';
+  document.getElementById('atr-rent').value    = '';
+  document.getElementById('atr-deposit').value = '';
+  if (!blockId || !atrRooms[blockId] || !atrRooms[blockId].length) {
+    roomSel.disabled = true;
+    roomSel.innerHTML = '<option value="">— No available rooms —</option>';
+    return;
+  }
+  atrRooms[blockId].forEach(function(r) {
+    var opt = document.createElement('option');
+    opt.value = r.id;
+    opt.textContent = 'Room ' + r.room_number + ' — ' + r.type.charAt(0).toUpperCase() + r.type.slice(1) + ' · R' + Number(r.price).toLocaleString('en-ZA') + '/mo';
+    opt.dataset.price = r.price;
+    roomSel.appendChild(opt);
+  });
+  roomSel.disabled = false;
+}
+
+function atrRoomSelected() {
+  var roomSel = document.getElementById('atr-room');
+  var opt = roomSel.options[roomSel.selectedIndex];
+  if (!opt || !opt.dataset.price) return;
+  var price = parseFloat(opt.dataset.price) || 0;
+  document.getElementById('atr-rent').value    = price;
+  document.getElementById('atr-deposit').value = price;
+}
+
+(function() {
+  var today = new Date().toISOString().slice(0, 10);
+  var end   = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().slice(0, 10);
+  document.getElementById('atr-lease-start').value = today;
+  document.getElementById('atr-lease-end').value   = end;
+})();
+
+document.getElementById('add-tenant-form-r').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn    = document.getElementById('atr-submit');
+  var errBox = document.getElementById('atr-error');
+  btn.disabled = true;
+  btn.innerHTML = 'Adding…';
+  errBox.style.display = 'none';
+
+  fetch('/backend/add-tenant.php', { method: 'POST', body: new FormData(this) })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.success) {
+        window.location.href = 'rooms.php?msg=tenant_added';
+      } else {
+        errBox.innerHTML = (data.errors || [data.error || 'An error occurred.']).join('<br>');
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Add Tenant';
+      }
+    })
+    .catch(function() {
+      errBox.innerHTML = 'Network error. Please try again.';
+      errBox.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = 'Add Tenant';
     });
 });
 

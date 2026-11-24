@@ -51,6 +51,20 @@ $residents = $residents->fetchAll();
 /* ── Block list for tabs ──────────────────────────────────────── */
 $blocks = $pdo->query('SELECT id, name FROM residences ORDER BY name')->fetchAll();
 
+/* ── Available rooms for Add Tenant modal ────────────────────── */
+$availableRooms = $pdo->query(
+    "SELECT rm.id, rm.room_number, rm.type, rm.floor, rm.price, rm.residence_id,
+            res.name AS block_name
+     FROM rooms rm
+     JOIN residences res ON res.id = rm.residence_id
+     WHERE rm.status = 'available'
+     ORDER BY res.name, rm.floor, rm.room_number"
+)->fetchAll();
+$roomsByBlock = [];
+foreach ($availableRooms as $ar) {
+    $roomsByBlock[$ar['residence_id']][] = $ar;
+}
+
 /* ── Summary counts ───────────────────────────────────────────── */
 $totalActive   = (int)$pdo->query("SELECT COUNT(*) FROM residents WHERE status='active'")->fetchColumn();
 $expiring30    = (int)$pdo->query("SELECT COUNT(*) FROM residents WHERE status='active' AND DATEDIFF(lease_end, CURDATE()) BETWEEN 0 AND 30")->fetchColumn();
@@ -64,9 +78,14 @@ $movedOut      = (int)$pdo->query("SELECT COUNT(*) FROM residents WHERE status='
 <main class="dash-content">
 
   <?php if (!empty($_GET['msg'])): ?>
-    <div class="alert alert--success" data-auto-dismiss>
+    <?php $msg = $_GET['msg']; ?>
+    <div class="alert alert--<?= $msg === 'error' ? 'error' : 'success' ?>" data-auto-dismiss>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-      <?= $_GET['msg'] === 'moved_out' ? 'Tenant moved out and room marked available.' : 'Done.' ?>
+      <?= $msg === 'tenant_added' ? 'Tenant added and room assigned successfully.'
+        : ($msg === 'moved_out' ? 'Tenant moved out and room marked available.'
+        : ($msg === 'deleted'  ? 'Tenant record deleted successfully.'
+        : ($msg === 'error'    ? 'An error occurred. Please try again.'
+        : 'Done.'))) ?>
     </div>
   <?php endif; ?>
 
@@ -142,6 +161,7 @@ $movedOut      = (int)$pdo->query("SELECT COUNT(*) FROM residents WHERE status='
        class="btn btn--sm btn--ghost" style="<?= $filterStatus==='all' ? 'border-color:var(--navy);color:var(--navy)' : '' ?>">All</a>
 
     <span class="filter-count" style="margin-left:auto"><?= count($residents) ?> tenant<?= count($residents) != 1 ? 's' : '' ?></span>
+    <button onclick="openModal('add-tenant-modal')" class="btn btn--primary btn--sm">+ Add Tenant</button>
   </div>
 
   <!-- ══ TENANTS TABLE ═════════════════════════════════════════ -->
@@ -239,7 +259,7 @@ $movedOut      = (int)$pdo->query("SELECT COUNT(*) FROM residents WHERE status='
             </td>
 
             <td>
-              <div style="display:flex;gap:5px;align-items:center">
+              <div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap">
                 <?php if ($r['application_id']): ?>
                 <a href="application-view.php?id=<?= $r['application_id'] ?>"
                    class="btn btn--ghost btn--sm">Profile</a>
@@ -251,6 +271,15 @@ $movedOut      = (int)$pdo->query("SELECT COUNT(*) FROM residents WHERE status='
                   Move Out
                 </button>
                 <?php endif; ?>
+
+                <form method="POST" action="/backend/delete-resident.php"
+                  onsubmit="return confirm('Permanently delete <?= htmlspecialchars(addslashes($r['first_name'] . ' ' . $r['last_name'])) ?> from the tenant list?\n\nThis cannot be undone.')">
+                  <?= csrf_field() ?>
+                  <input type="hidden" name="id" value="<?= $r['resident_id'] ?>">
+                  <button type="submit" class="btn btn--ghost btn--sm" style="color:var(--red);border-color:transparent" title="Delete tenant">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                  </button>
+                </form>
               </div>
             </td>
 
@@ -319,6 +348,195 @@ function openMoveOutModalResidents(id, name, room) {
   document.getElementById('mor-room').textContent  = room;
   openModal('move-out-modal-r');
 }
+</script>
+
+<!-- ══ ADD TENANT MODAL ══════════════════════════════════════════ -->
+<div class="modal-backdrop" id="add-tenant-modal">
+  <div class="modal" style="max-width:620px">
+    <div class="modal-header">
+      <h3>Add Tenant</h3>
+      <button class="modal-close">&times;</button>
+    </div>
+    <form id="add-tenant-form">
+      <?= csrf_field() ?>
+      <div class="modal-body" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+        <!-- Room selection -->
+        <div style="grid-column:1/-1">
+          <p style="font-family:var(--font-head);font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Room Assignment</p>
+        </div>
+        <div class="field">
+          <label>Block / Residence <span style="color:var(--red)">*</span></label>
+          <select id="at-block" onchange="atUpdateRooms()" required>
+            <option value="">— Select block —</option>
+            <?php foreach ($blocks as $b): ?>
+              <?php if (!empty($roomsByBlock[$b['id']])): ?>
+              <option value="<?= $b['id'] ?>"><?= htmlspecialchars($b['name']) ?></option>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </select>
+        </div>
+        <div class="field">
+          <label>Available Room <span style="color:var(--red)">*</span></label>
+          <select name="room_id" id="at-room" onchange="atRoomSelected()" required disabled>
+            <option value="">— Select block first —</option>
+          </select>
+        </div>
+
+        <?php if (empty($availableRooms)): ?>
+        <div style="grid-column:1/-1;padding:10px 14px;background:var(--amber-dim,#fffbeb);border:1px solid #fcd34d;border-radius:var(--r-sm);font-size:.8rem;color:#92400e">
+          No available rooms at the moment. Mark a room as "Available" on the Rooms page first.
+        </div>
+        <?php endif; ?>
+
+        <!-- Personal details -->
+        <div style="grid-column:1/-1;border-top:1px solid var(--border-lt);padding-top:12px">
+          <p style="font-family:var(--font-head);font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--stone)">Tenant Details</p>
+        </div>
+        <div class="field">
+          <label>First Name <span style="color:var(--red)">*</span></label>
+          <input type="text" name="first_name" required placeholder="e.g. Thabo">
+        </div>
+        <div class="field">
+          <label>Last Name <span style="color:var(--red)">*</span></label>
+          <input type="text" name="last_name" required placeholder="e.g. Mokoena">
+        </div>
+        <div class="field">
+          <label>Email Address <span style="color:var(--red)">*</span></label>
+          <input type="email" name="email" required placeholder="tenant@email.com">
+        </div>
+        <div class="field">
+          <label>Phone Number <span style="color:var(--red)">*</span></label>
+          <input type="tel" name="phone" required placeholder="082 000 0000">
+        </div>
+        <div class="field">
+          <label>Date of Birth</label>
+          <input type="date" name="dob">
+        </div>
+        <div class="field">
+          <label>Gender</label>
+          <select name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <!-- Lease details -->
+        <div style="grid-column:1/-1;border-top:1px solid var(--border-lt);padding-top:12px">
+          <p style="font-family:var(--font-head);font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--stone)">Lease Details</p>
+        </div>
+        <div class="field">
+          <label>Lease Start <span style="color:var(--red)">*</span></label>
+          <input type="date" name="lease_start" id="at-lease-start" required>
+        </div>
+        <div class="field">
+          <label>Lease End <span style="color:var(--red)">*</span></label>
+          <input type="date" name="lease_end" id="at-lease-end" required>
+        </div>
+        <div class="field">
+          <label>Monthly Rent (R)</label>
+          <input type="number" name="monthly_rent" id="at-rent" step="50" min="0" placeholder="Auto-filled from room">
+        </div>
+        <div class="field">
+          <label>Deposit Amount (R)</label>
+          <input type="number" name="deposit_amount" id="at-deposit" step="50" min="0" placeholder="Auto-filled from room">
+        </div>
+        <div class="field">
+          <label>Deposit Status</label>
+          <select name="deposit_status">
+            <option value="unpaid">Unpaid — to be collected</option>
+            <option value="paid">Paid — already received</option>
+          </select>
+        </div>
+        <div class="field" style="grid-column:1/-1">
+          <label>Notes <span class="text-muted">(optional)</span></label>
+          <textarea name="notes" rows="2" placeholder="Any special requirements or notes…"></textarea>
+        </div>
+
+      </div>
+
+      <div id="at-error" style="display:none;margin:0 22px 4px;padding:10px 14px;background:var(--red-dim);color:var(--red);border-radius:var(--r-sm);font-size:.8rem;border:1px solid #fca5a5"></div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn--ghost modal-close">Cancel</button>
+        <button type="submit" class="btn btn--primary" id="at-submit">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Add Tenant
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+var atRooms = <?= json_encode($roomsByBlock) ?>;
+
+function atUpdateRooms() {
+  var blockId = document.getElementById('at-block').value;
+  var roomSel = document.getElementById('at-room');
+  roomSel.innerHTML = '<option value="">— Select room —</option>';
+  document.getElementById('at-rent').value    = '';
+  document.getElementById('at-deposit').value = '';
+  if (!blockId || !atRooms[blockId] || !atRooms[blockId].length) {
+    roomSel.disabled = true;
+    roomSel.innerHTML = '<option value="">— No available rooms —</option>';
+    return;
+  }
+  atRooms[blockId].forEach(function(r) {
+    var opt = document.createElement('option');
+    opt.value = r.id;
+    opt.textContent = 'Room ' + r.room_number + ' — ' + r.type.charAt(0).toUpperCase() + r.type.slice(1) + ' · R' + Number(r.price).toLocaleString('en-ZA') + '/mo';
+    opt.dataset.price = r.price;
+    roomSel.appendChild(opt);
+  });
+  roomSel.disabled = false;
+}
+
+function atRoomSelected() {
+  var roomSel = document.getElementById('at-room');
+  var opt = roomSel.options[roomSel.selectedIndex];
+  if (!opt || !opt.dataset.price) return;
+  var price = parseFloat(opt.dataset.price) || 0;
+  document.getElementById('at-rent').value    = price;
+  document.getElementById('at-deposit').value = price;
+}
+
+// Pre-fill lease dates
+(function() {
+  var today = new Date().toISOString().slice(0, 10);
+  var end   = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().slice(0, 10);
+  document.getElementById('at-lease-start').value = today;
+  document.getElementById('at-lease-end').value   = end;
+})();
+
+document.getElementById('add-tenant-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn    = document.getElementById('at-submit');
+  var errBox = document.getElementById('at-error');
+  btn.disabled = true;
+  btn.innerHTML = 'Adding…';
+  errBox.style.display = 'none';
+
+  fetch('/backend/add-tenant.php', { method: 'POST', body: new FormData(this) })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.success) {
+        window.location.href = 'residents.php?msg=tenant_added';
+      } else {
+        errBox.innerHTML = (data.errors || [data.error || 'An error occurred.']).join('<br>');
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Add Tenant';
+      }
+    })
+    .catch(function() {
+      errBox.innerHTML = 'Network error. Please try again.';
+      errBox.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = 'Add Tenant';
+    });
+});
 </script>
 
 <?php include __DIR__ . '/partials/foot.php'; ?>
